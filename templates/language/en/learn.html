@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Leren - PowerTaal{% endblock %}
+
+{% block content %}
+<!-- Learning Hero Section -->
+<section class="learning-hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="learning-title">Leren</h1>
+                <p class="lead">U leert nu {{ target_lang }} vanuit {{ source_lang }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Learning Content Section -->
+<section class="learning-content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="learning-card">
+                    <h2>Woorden leren</h2>
+                    <p>Hier kunt u woorden leren in de door u gekozen taalcombinatie.</p>
+                    
+                    <div class="word-list mt-4">
+                        <div class="word-item">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="source-word">{{ source_lang }} woord</div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="arrow">→</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="target-word">{{ target_lang }} woord</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Placeholder for more words -->
+                        <div class="placeholder-text text-center mt-4">
+                            <p>Deze pagina is nog in ontwikkeling. Binnenkort kunt u hier woorden leren.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="actions text-center mt-4">
+                        <a href="{% url 'main:select-language' %}" class="btn btn-secondary">Terug naar taalselectie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .learning-card {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+    
+    .word-item {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .source-word, .target-word {
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        text-align: center;
+    }
+    
+    .arrow {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+    
+    .placeholder-text {
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+    }
+</style>
+{% endblock %} 

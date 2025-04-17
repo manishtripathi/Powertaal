@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}GitHub Backup{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">GitHub Backup</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Use this tool to backup your project to GitHub.</p>
+                    
+                    <div class="alert alert-info">
+                        <h4>Instructions:</h4>
+                        <p>To backup your project, run the following command in your terminal:</p>
+                        <pre class="bg-light p-3">python github_backup.py</pre>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h4>Backup Steps:</h4>
+                        <ol class="list-group list-group-numbered mb-4">
+                            <li class="list-group-item">Check Git status</li>
+                            <li class="list-group-item">Add changes to staging area</li>
+                            <li class="list-group-item">Commit changes with a descriptive message</li>
+                            <li class="list-group-item">Push changes to GitHub</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

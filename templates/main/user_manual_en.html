@@ -1,0 +1,693 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}PowerTaal - User Manual{% endblock %}
+
+{% block content %}
+<div class="container manual-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="manual-title">PowerTaal User Manual</h1>
+            <p class="manual-subtitle">Learn and practice languages at your own pace</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="manual-nav sticky-top">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" href="#introduction">Introduction</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#getting-started">Getting Started</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#standard-option">Standard Option (Free)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#advanced-option">Advanced Option (Premium)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#language-selection">Language Selection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#practice-modes">Practice Modes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tracking-progress">Tracking Progress</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#account-management">Account Management</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">Frequently Asked Questions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact-support">Contact & Support</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="manual-content">
+                <section id="introduction" class="manual-section">
+                    <h2>Introduction to PowerTaal</h2>
+                    <p>Welcome to PowerTaal, your comprehensive platform for learning and practicing languages through an engaging, interactive approach. PowerTaal is designed to help you learn new languages at your own pace through repetition, varied exercises, and practical application.</p>
+                    
+                    <p>Our platform offers two main options:</p>
+                    <ul>
+                        <li><strong>Standard (Free):</strong> Access to basic vocabulary practice without registration</li>
+                        <li><strong>Advanced (Premium):</strong> Full access to all features, including expanded vocabulary sets, sentences, and additional training options</li>
+                    </ul>
+                    
+                    <p>This manual will guide you through all aspects of using PowerTaal effectively to enhance your language learning journey.</p>
+                </section>
+
+                <section id="getting-started" class="manual-section">
+                    <h2>Getting Started</h2>
+                    <p>PowerTaal is designed to be intuitive and easy to use. Here's how to get started:</p>
+                    
+                    <h3>For Free Users:</h3>
+                    <ol>
+                        <li>Visit the PowerTaal homepage</li>
+                        <li>Click the "Start Now" button under the Standard option</li>
+                        <li>Select your desired language to practice</li>
+                        <li>Choose a practice mode and begin learning immediately</li>
+                    </ol>
+                    
+                    <h3>For Premium Users:</h3>
+                    <ol>
+                        <li>Visit the PowerTaal homepage</li>
+                        <li>Click the "Login" button under the Advanced option</li>
+                        <li>If you already have an account, log in with your credentials</li>
+                        <li>If you're new, click "Register" to create an account (€7.99)</li>
+                        <li>Once logged in, you'll have access to your personalized dashboard</li>
+                    </ol>
+                </section>
+
+                <section id="standard-option" class="manual-section">
+                    <h2>Standard Option (Free)</h2>
+                    <p>The Standard option provides a great introduction to language learning with PowerTaal without requiring registration or payment.</p>
+                    
+                    <h3>Features:</h3>
+                    <ul>
+                        <li><strong>Free Access:</strong> No registration or payment required</li>
+                        <li><strong>Basic Vocabulary:</strong> Practice with a substantial set of common words</li>
+                        <li><strong>Multiple Languages:</strong> Choose from various languages to practice</li>
+                        <li><strong>Basic Practice Modes:</strong> Access to fundamental learning exercises</li>
+                        <li><strong>Score Tracking:</strong> See your performance at the end of each exercise</li>
+                    </ul>
+                    
+                    <p>The Standard option is perfect for casual learners or those who want to try PowerTaal before committing to the premium features.</p>
+                </section>
+
+                <section id="advanced-option" class="manual-section">
+                    <h2>Advanced Option (Premium)</h2>
+                    <p>The Advanced option provides a comprehensive language learning experience with additional features and content for €7.99.</p>
+                    
+                    <h3>Premium Features:</h3>
+                    <ul>
+                        <li><strong>Expanded Vocabulary:</strong> Access to a larger set of words and phrases</li>
+                        <li><strong>Sentence Practice:</strong> Learn and practice complete sentences</li>
+                        <li><strong>Articles & Grammar:</strong> Practice with words and their corresponding articles</li>
+                        <li><strong>Dictation Exercises:</strong> Improve your listening and writing skills</li>
+                        <li><strong>Personal Dashboard:</strong> Track your progress over time</li>
+                        <li><strong>Regular Updates:</strong> New words and sentences added monthly</li>
+                        <li><strong>Unlimited Access:</strong> Practice as much as you want across all features</li>
+                    </ul>
+                    
+                    <p>The Advanced option is ideal for serious language learners who want a more comprehensive and personalized learning experience.</p>
+                </section>
+
+                <section id="language-selection" class="manual-section">
+                    <h2>Language Selection</h2>
+                    <p>PowerTaal offers practice in multiple languages. To select a language:</p>
+                    
+                    <ol>
+                        <li>From the homepage, click "Start Now" (Standard) or log in (Advanced)</li>
+                        <li>On the language selection page, you'll see available languages</li>
+                        <li>Click on your desired language to begin practicing</li>
+                        <li>You can change languages at any time by returning to the language selection page</li>
+                    </ol>
+                    
+                    <h3>Available Languages:</h3>
+                    <p>PowerTaal currently supports practice in the following languages:</p>
+                    <ul>
+                        <li>Dutch</li>
+                        <li>English</li>
+                        <li>German</li>
+                        <li>French</li>
+                        <li>Spanish</li>
+                        <li>And more...</li>
+                    </ul>
+                    
+                    <p>Premium users have access to more extensive vocabulary sets in each language.</p>
+                </section>
+
+                <section id="practice-modes" class="manual-section">
+                    <h2>Practice Modes</h2>
+                    <p>PowerTaal offers various practice modes to help you learn effectively:</p>
+                    
+                    <h3>Standard Practice Modes:</h3>
+                    <ul>
+                        <li><strong>Word Recognition:</strong> Match words with their meanings</li>
+                        <li><strong>Typing Practice:</strong> Type the correct translation of displayed words</li>
+                        <li><strong>Memory Games:</strong> Test your recall of vocabulary</li>
+                    </ul>
+                    
+                    <h3>Advanced Practice Modes (Premium):</h3>
+                    <ul>
+                        <li><strong>Article Practice:</strong> Learn words with their correct articles</li>
+                        <li><strong>Sentence Construction:</strong> Practice forming complete sentences</li>
+                        <li><strong>Dictation:</strong> Write what you hear to improve listening skills</li>
+                        <li><strong>Advanced Vocabulary:</strong> Practice with specialized and thematic vocabulary</li>
+                    </ul>
+                    
+                    <p>To select a practice mode:</p>
+                    <ol>
+                        <li>Choose your language</li>
+                        <li>Select the desired practice mode from the options displayed</li>
+                        <li>Follow the on-screen instructions for each exercise</li>
+                    </ol>
+                </section>
+
+                <section id="tracking-progress" class="manual-section">
+                    <h2>Tracking Progress</h2>
+                    <p>PowerTaal helps you monitor your learning progress:</p>
+                    
+                    <h3>For Standard Users:</h3>
+                    <ul>
+                        <li>View your score at the end of each practice session</li>
+                        <li>See which words you got correct and which need more practice</li>
+                    </ul>
+                    
+                    <h3>For Premium Users:</h3>
+                    <ul>
+                        <li>Access your personal dashboard showing comprehensive statistics</li>
+                        <li>Track progress over time with performance graphs</li>
+                        <li>View your strengths and areas for improvement</li>
+                        <li>See your practice history and frequency</li>
+                        <li>Get personalized recommendations for further practice</li>
+                    </ul>
+                    
+                    <p>Regular practice and progress tracking will help you identify patterns and improve your language skills more effectively.</p>
+                </section>
+
+                <section id="account-management" class="manual-section">
+                    <h2>Account Management</h2>
+                    <p>Premium users can manage their accounts through the user dashboard:</p>
+                    
+                    <h3>Account Features:</h3>
+                    <ul>
+                        <li><strong>Profile Settings:</strong> Update your personal information</li>
+                        <li><strong>Password Management:</strong> Change your password for security</li>
+                        <li><strong>Subscription Details:</strong> View your subscription status</li>
+                        <li><strong>Email Preferences:</strong> Manage communication settings</li>
+                    </ul>
+                    
+                    <h3>To Access Account Settings:</h3>
+                    <ol>
+                        <li>Log in to your premium account</li>
+                        <li>Click on your username in the top-right corner</li>
+                        <li>Select "Account Settings" from the dropdown menu</li>
+                        <li>Make desired changes and save your settings</li>
+                    </ol>
+                </section>
+
+                <section id="faq" class="manual-section">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-item">
+                        <h3>How much does PowerTaal cost?</h3>
+                        <p>PowerTaal offers a free Standard option with no registration required. The Advanced option costs €7.99 for full access to all premium features.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Can I switch between languages?</h3>
+                        <p>Yes, you can practice multiple languages and switch between them at any time by returning to the language selection page.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>How often is new content added?</h3>
+                        <p>For Premium users, new words and sentences are added monthly to enhance your learning experience.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Can I use PowerTaal on mobile devices?</h3>
+                        <p>Yes, PowerTaal is fully responsive and works on smartphones, tablets, and desktop computers.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>How do I cancel my premium subscription?</h3>
+                        <p>You can cancel your subscription through your account settings. Navigate to "Subscription Details" and follow the cancellation instructions.</p>
+                    </div>
+                </section>
+
+                <section id="contact-support" class="manual-section">
+                    <h2>Contact & Support</h2>
+                    <p>If you need assistance or have questions about PowerTaal, we're here to help:</p>
+                    
+                    <h3>Support Options:</h3>
+                    <ul>
+                        <li><strong>Email Support:</strong> <a href="mailto:support@powertaal.com">support@powertaal.com</a></li>
+                        <li><strong>Contact Form:</strong> Available on our Contact page</li>
+                        <li><strong>FAQ Section:</strong> Check our frequently asked questions for quick answers</li>
+                    </ul>
+                    
+                    <p>Our support team is available Monday through Friday, 9:00 AM to 5:00 PM CET, and will respond to inquiries within 24-48 hours.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('.manual-nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Highlight active section in nav
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.manual-section');
+            const navLinks = document.querySelectorAll('.manual-nav .nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
+
+<!-- Start Footer Section -->
+<footer class="powertaal-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <div class="footer-brand">
+                    <img src="{% static 'img/brand-logo.png' %}" alt="PowerTaal Logo" class="footer-logo">
+                    <h2 class="footer-title">PowerTaal</h2>
+                </div>
+                <p class="footer-slogan">VINGERSVLUG WOORDEN LEREN & SCHRIJVEN</p>
+                <p class="footer-description">
+                    Dé plek om in uw eigen tempo en met uw eigen input een nieuwe taal te leren. 
+                    Door herhaling en diversiteit tijdens de training zal het u makkelijker 
+                    afgaan dan bij vele andere methodes.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon facebook-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon instagram-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon twitter-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon youtube-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                <h3 class="footer-section-title">Platform</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'main:home' %}">Home</a></li>
+                    <li><a href="{% url 'main:about' %}">Over Ons</a></li>
+                    <li><a href="{% url 'main:select-language' %}">Taalselectie</a></li>
+                    <li><a href="{% url 'main:learn' %}">Leren</a></li>
+                    <li><a href="{% url 'main:type' %}">Overtypen</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h3 class="footer-section-title">Beschikbare Talen</h3>
+                <ul class="footer-language-list">
+                    <li>Nederlands / Engels</li>
+                    <li>Engels / Nederlands</li>
+                    <li>Binnenkort: Duits</li>
+                    <li>Binnenkort: Frans</li>
+                    <li>Binnenkort: Spaans</li>
+                    <li>Binnenkort: Italiaans</li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <h3 class="footer-section-title">Contact</h3>
+                <ul class="footer-contact-list">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:info@powertaal.nl">info@powertaal.nl</a></li>
+                    <li><i class="fas fa-phone"></i> +31 (0)6 12345678</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Amsterdam, Nederland</li>
+                </ul>
+                <a href="{% url 'main:contact' %}" class="btn btn-contact">Neem contact op</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright">© {% now "Y" %} PowerTaal. Alle rechten voorbehouden.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">Privacybeleid</a></li>
+                        <li><a href="#">Algemene voorwaarden</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Section -->
+
+<style>
+    .manual-container {
+        padding: 40px 0;
+        max-width: 1200px;
+    }
+    
+    .manual-title {
+        color: #006699;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .manual-subtitle {
+        color: #666;
+        font-size: 18px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .manual-nav {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .manual-nav .nav-link {
+        color: #333;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .manual-nav .nav-link:hover {
+        background-color: #e9ecef;
+        color: #006699;
+    }
+    
+    .manual-content {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .manual-section {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .manual-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    
+    .manual-section h2 {
+        color: #006699;
+        font-size: 28px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #FF6600;
+        display: inline-block;
+    }
+    
+    .manual-section h3 {
+        color: #333;
+        font-size: 22px;
+        margin: 20px 0 15px;
+    }
+    
+    .manual-section p, .manual-section li {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #444;
+    }
+    
+    .manual-section ul, .manual-section ol {
+        margin-bottom: 20px;
+        padding-left: 20px;
+    }
+    
+    .faq-item {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px dashed #ddd;
+    }
+    
+    .faq-item:last-child {
+        border-bottom: none;
+    }
+    
+    .faq-item h3 {
+        color: #FF6600;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    @media (max-width: 768px) {
+        .manual-nav {
+            position: relative !important;
+            margin-bottom: 30px;
+        }
+        
+        .manual-title {
+            font-size: 28px;
+        }
+        
+        .manual-section h2 {
+            font-size: 24px;
+        }
+        
+        .manual-section h3 {
+            font-size: 20px;
+        }
+    }
+    
+    /* Footer Styles */
+    .powertaal-footer {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        padding: 60px 0 20px;
+        margin-top: 80px;
+        position: relative;
+        font-family: 'Bookerly', sans-serif;
+    }
+    
+    .powertaal-footer::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: 0;
+        right: 0;
+        height: 30px;
+        background-color: #FF6600;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+    }
+    
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .footer-logo {
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .footer-title {
+        color: #FF6600;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0;
+    }
+    
+    .footer-slogan {
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        letter-spacing: 0.5px;
+    }
+    
+    .footer-description {
+        color: #cccccc;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icon.facebook {
+        background-color: #1877f2;
+    }
+    
+    .social-icon.instagram {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    
+    .social-icon.twitter {
+        background-color: #1da1f2;
+    }
+    
+    .social-icon.youtube {
+        background-color: #ff0000;
+    }
+    
+    .social-icon:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+    }
+    
+    .footer-section-title {
+        color: #FF6600;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .footer-section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background-color: #00A8E8;
+    }
+    
+    .footer-links, .footer-language-list, .footer-contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links li, .footer-language-list li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-contact-list li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .footer-contact-list i {
+        color: #00A8E8;
+        margin-right: 10px;
+        width: 16px;
+    }
+    
+    .footer-links a, .footer-contact-list a {
+        color: #cccccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover, .footer-contact-list a:hover {
+        color: #FF6600;
+        text-decoration: none;
+    }
+    
+    .btn-contact {
+        background-color: #00A8E8;
+        color: #ffffff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    
+    .btn-contact:hover {
+        background-color: #0077A2;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid #333333;
+        padding-top: 20px;
+        margin-top: 40px;
+    }
+    
+    .copyright {
+        color: #999999;
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+    
+    .footer-bottom-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+    
+    .footer-bottom-links a {
+        color: #999999;
+        font-size: 13px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-bottom-links a:hover {
+        color: #FF6600;
+    }
+    
+    @media (max-width: 992px) {
+        .footer-bottom-links {
+            justify-content: flex-start;
+            margin-top: 15px;
+        }
+    }
+    
+    body {
+        font-family: 'Bookerly', sans-serif;
+    }
+</style>
+{% endblock %} 

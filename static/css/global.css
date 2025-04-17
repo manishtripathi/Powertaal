@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Bookerly';
+    src: url('../fonts/bookerly/Bookerly-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    font-family: 'Bookerly', sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bookerly', sans-serif;
+}
+
+h1 {
+    font-size: 2.25em; /* Approx 45px if base is 20px */
+}
+
+h2 {
+    font-size: 1.875em; /* Approx 37.5px */
+}
+
+h3 {
+    font-size: 1.5em; /* Approx 30px */
+}
+
+h4 {
+    font-size: 1.125em; /* Approx 22.5px */
+}
+
+h5 {
+    font-size: 1em; /* 20px */
+}
+
+h6 {
+    font-size: 0.875em; /* 17.5px */
+} 

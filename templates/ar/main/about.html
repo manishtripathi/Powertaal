@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}عن PowerTaal{% endblock %}
+
+{% block content %}
+<!-- About Hero Section -->
+<section class="about-hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="about-title">عن PowerTaal</h1>
+                <p class="about-subtitle">تعلم اللغات بطريقة ممتعة وفعالة</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Story Section -->
+<section class="our-story-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="section-title">قصتنا</h2>
+                <p>تأسست PowerTaal في عام 2020 بهدف بسيط: جعل تعلم اللغات أكثر متعة وفعالية. نحن نؤمن بأن أفضل طريقة لتعلم لغة جديدة هي من خلال الممارسة النشطة والتكرار المنتظم.</p>
+                <p>بدأنا كمشروع صغير يركز على تعليم اللغة الهولندية، ولكننا توسعنا منذ ذلك الحين لنشمل العديد من اللغات الأخرى. هدفنا هو مساعدة المتعلمين من جميع المستويات على تحسين مهاراتهم اللغوية من خلال تمارين تفاعلية وممتعة.</p>
+                <p>اليوم، يستخدم الآلاف من المتعلمين منصتنا يوميًا لتحسين مهاراتهم اللغوية. نحن فخورون بالتأثير الإيجابي الذي أحدثناه في رحلة تعلم اللغة للكثيرين، ونتطلع إلى مساعدة المزيد من المتعلمين في المستقبل.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'img/about-story.jpg' %}" alt="PowerTaal Story" class="img-fluid about-image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Mission Section -->
+<section class="our-mission-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'img/about-mission.jpg' %}" alt="PowerTaal Mission" class="img-fluid about-image">
+            </div>
+            <div class="col-md-6">
+                <h2 class="section-title">مهمتنا</h2>
+                <p>في PowerTaal، مهمتنا هي جعل تعلم اللغات في متناول الجميع. نحن نؤمن بأن القدرة على التواصل بلغات متعددة تفتح أبوابًا جديدة للفرص وتعزز التفاهم بين الثقافات المختلفة.</p>
+                <p>نحن ملتزمون بتوفير منصة تعليمية عالية الجودة تجمع بين الفعالية والمتعة. من خلال تمارين تفاعلية وتقنيات تعلم مبتكرة، نهدف إلى مساعدة المتعلمين على تحقيق أهدافهم اللغوية بطريقة فعالة وممتعة.</p>
+                <p>نحن نسعى جاهدين لتحسين منصتنا باستمرار بناءً على ملاحظات المستخدمين وأحدث الأبحاث في مجال اكتساب اللغة. هدفنا النهائي هو إنشاء مجتمع عالمي من متعلمي اللغات المتحمسين الذين يدعمون بعضهم البعض في رحلتهم التعليمية.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Team Section -->
+<section class="our-team-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="section-title">فريقنا</h2>
+                <p class="section-subtitle">تعرف على الأشخاص الذين يجعلون PowerTaal ممكنًا</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{% static 'img/team-1.jpg' %}" alt="Team Member 1" class="img-fluid team-image">
+                    <h3>يان فان دير مير</h3>
+                    <p class="member-role">المؤسس والرئيس التنفيذي</p>
+                    <p class="member-bio">يان هو مؤسس PowerTaal ولديه أكثر من 15 عامًا من الخبرة في تعليم اللغات. شغفه هو جعل تعلم اللغات في متناول الجميع.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{% static 'img/team-2.jpg' %}" alt="Team Member 2" class="img-fluid team-image">
+                    <h3>سارة جونسون</h3>
+                    <p class="member-role">رئيسة قسم التعليم</p>
+                    <p class="member-bio">سارة هي خبيرة في اكتساب اللغة الثانية وتقود تطوير المناهج الدراسية في PowerTaal. هدفها هو إنشاء تجارب تعليمية فعالة وممتعة.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{% static 'img/team-3.jpg' %}" alt="Team Member 3" class="img-fluid team-image">
+                    <h3>ماركو سيلفا</h3>
+                    <p class="member-role">رئيس قسم التكنولوجيا</p>
+                    <p class="member-bio">ماركو هو مطور برمجيات ذو خبرة يقود الفريق التقني في PowerTaal. إنه متحمس لاستخدام التكنولوجيا لتحسين تجربة تعلم اللغة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="section-title">ما يقوله مستخدمونا</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"لقد ساعدني PowerTaal على تحسين مهاراتي في اللغة الهولندية بشكل كبير. التمارين ممتعة وفعالة!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>سارة م.</h4>
+                        <p>طالبة لغة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"أستخدم PowerTaal يوميًا لتحسين مهاراتي في الكتابة. إنه سهل الاستخدام وفعال للغاية!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>محمد ع.</h4>
+                        <p>محترف أعمال</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"كمدرس، أوصي بشدة بـ PowerTaal لطلابي. إنه أداة رائعة لتعلم اللغات!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>ليلى ك.</h4>
+                        <p>مدرسة لغة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Us Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="section-title">تواصل معنا</h2>
+                <p class="section-subtitle">لديك أسئلة أو ملاحظات؟ نحن هنا للمساعدة!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <h3>معلومات الاتصال</h3>
+                    <p><i class="fas fa-envelope"></i> البريد الإلكتروني: info@powertaal.com</p>
+                    <p><i class="fas fa-phone"></i> الهاتف: +31 20 123 4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> العنوان: أمستردام، هولندا</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="contact-form">
+                    <h3>أرسل لنا رسالة</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="الاسم">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="البريد الإلكتروني">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="رسالتك"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">إرسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

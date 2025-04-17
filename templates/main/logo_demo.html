@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}PowerTaal Logo Demo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h1>PowerTaal Logo Demo</h1>
+            <p class="lead">Different versions and implementations of the PowerTaal logo</p>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>HTML/CSS Logo</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="height: 200px;">
+                    {% include 'components/logo.html' %}
+                </div>
+                <div class="card-footer">
+                    <p class="mb-0">Responsive HTML/CSS implementation</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Original Image Logo</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <img src="{% static 'img/brand-logo.png' %}" alt="PowerTaal Logo" class="img-fluid" style="max-height: 100px;">
+                </div>
+                <div class="card-footer">
+                    <p class="mb-0">Original PNG image logo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>SVG Full Logo</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <img src="{% static 'img/powertaal-logo.svg' %}" alt="PowerTaal Logo SVG" class="img-fluid" style="max-height: 100px;">
+                </div>
+                <div class="card-footer">
+                    <p class="mb-0">Scalable Vector Graphics (SVG) version</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>SVG Icon Only</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <img src="{% static 'img/powertaal-icon.svg' %}" alt="PowerTaal Icon SVG" class="img-fluid" style="max-height: 100px;">
+                </div>
+                <div class="card-footer">
+                    <p class="mb-0">Icon-only SVG version for favicon</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Logo on Dark Background</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="height: 200px; background-color: #222;">
+                    <div class="powertaal-logo-dark">
+                        <div class="logo-circle-dark">
+                            <span class="logo-text-dark">Pt</span>
+                        </div>
+                        <div class="logo-name-dark">PowerTaal</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="mb-0">Logo optimized for dark backgrounds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Logo Icon Only (HTML/CSS)</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <div class="logo-circle" style="width: 100px; height: 100px;">
+                        <span class="logo-text" style="font-size: 54px;">Pt</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="mb-0">Icon-only version for favicon or small displays</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <a href="{% url 'main:home' %}" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Dark background version */
+    .powertaal-logo-dark {
+        display: flex;
+        align-items: center;
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .logo-circle-dark {
+        width: 60px;
+        height: 60px;
+        background: #00b0f0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #ff6600;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    .logo-text-dark {
+        color: white;
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        line-height: 1;
+    }
+    
+    .logo-name-dark {
+        color: #ff6600;
+        font-size: 36px;
+        font-weight: bold;
+        margin-left: 10px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    
+    .logo-text {
+        font-family: 'Bookerly', sans-serif;
+    }
+</style>
+{% endblock %} 

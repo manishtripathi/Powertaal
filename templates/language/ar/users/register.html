@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}تسجيل حساب جديد{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="auth-container">
+        <div class="form-container">
+            <div class="form-title">
+                <h2>تسجيل حساب جديد</h2>
+            </div>
+            
+            <form method="post" class="auth-form" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                            {% if field.field.required %}
+                                <span class="required">*</span>
+                            {% endif %}
+                        </label>
+                        
+                        {{ field }}
+                        
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                        
+                        {% if field.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in field.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-block">تسجيل</button>
+                </div>
+            </form>
+            
+            <!-- Heeft u al een account? Inloggen -->
+            <div class="login-link-bottom">
+                <p>لديك حساب بالفعل؟ <a href="{% url 'users:login' %}" class="form-link">تسجيل الدخول</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+    }
+    
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .form-title {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .form-title h2 {
+        color: #333;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    .login-link-bottom {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #00b0f0;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 176, 240, 0.2);
+    }
+    
+    .required {
+        color: #dc3545;
+        margin-right: 4px;
+    }
+    
+    .form-text {
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+    
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+    .alert {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    
+    .alert-danger {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+    }
+    
+    .form-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .btn-block {
+        width: 100%;
+        display: block;
+    }
+    
+    .btn-primary {
+        background-color: #00b0f0;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0090c5;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-link {
+        color: #00b0f0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .form-link:hover {
+        color: #0090c5;
+        text-decoration: underline;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .form-container {
+            padding: 20px;
+        }
+        
+        .form-title h2 {
+            font-size: 22px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %} 

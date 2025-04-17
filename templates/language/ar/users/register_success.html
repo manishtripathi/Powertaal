@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}تم إنشاء الحساب بنجاح{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="auth-container">
+        <div class="form-container">
+            <div class="success-icon">
+                <i class="check-circle"></i>
+            </div>
+            
+            <div class="success-title">
+                <h2>تم إنشاء الحساب بنجاح!</h2>
+            </div>
+            
+            <div class="success-message">
+                <p>شكراً للتسجيل. يمكنك الآن تسجيل الدخول إلى حسابك.</p>
+            </div>
+            
+            <div class="login-link">
+                <a href="{% url 'users:login' %}" class="btn btn-primary">تسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+    }
+    
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        direction: rtl;
+    }
+    
+    .success-icon {
+        margin-bottom: 20px;
+    }
+    
+    .check-circle {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #4caf50;
+        position: relative;
+    }
+    
+    .check-circle:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 20px;
+        border-bottom: 4px solid white;
+        border-left: 4px solid white;
+        transform: translate(-50%, -60%) rotate(-45deg);
+    }
+    
+    .success-title {
+        margin-bottom: 20px;
+    }
+    
+    .success-title h2 {
+        color: #333;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    .success-message {
+        margin-bottom: 30px;
+    }
+    
+    .success-message p {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .login-link {
+        margin-top: 20px;
+    }
+    
+    .btn {
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        display: inline-block;
+    }
+    
+    .btn-primary {
+        background-color: #00b0f0;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0090c5;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .form-container {
+            padding: 20px;
+        }
+        
+        .success-title h2 {
+            font-size: 22px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
+        .check-circle {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .check-circle:before {
+            width: 30px;
+            height: 15px;
+            border-width: 3px;
+        }
+    }
+</style>
+{% endblock %} 

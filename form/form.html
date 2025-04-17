@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerTaal.com</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --background-color: #f8fafc;
+            --error-color: #ef4444;
+            --success-color: #22c55e;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --input-bg: #f0f7ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            background-image: 
+                radial-gradient(at 40% 20%, rgba(37,99,235,0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, rgba(37,99,235,0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, rgba(37,99,235,0.1) 0px, transparent 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-color);
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            border-left: 6px solid var(--primary-color);
+            border-right: 6px solid var(--primary-color);
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), #60a5fa);
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), #60a5fa);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            background-color: var(--input-bg);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+            background-color: white;
+        }
+
+        input::placeholder {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .forgot-password {
+            text-align: left;
+            margin: 16px 0 24px;
+        }
+
+        .forgot-password a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+        }
+
+        .login-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .register-text {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .register-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            background: var(--input-bg);
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .language-btn {
+            padding: 8px 12px;
+            border: none;
+            background: white;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .language-btn.active {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-btn:hover:not(.active) {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .language-btn .flag {
+            width: 24px;
+            height: 18px;
+            border-radius: 2px;
+            display: inline-block;
+            background-size: cover;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            order: 1;
+        }
+
+        .flag.nl {
+            background: linear-gradient(to bottom,
+                #AE1C28 33.33%,
+                #FFFFFF 33.33%, #FFFFFF 66.66%,
+                #21468B 66.66%);
+        }
+
+        .flag.en {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+DQo8Y2xpcFBhdGggaWQ9InQiPg0KPHBhdGggZD0iTTAsMGgxMjAwdjYwMEgweiIvPg0KPC9jbGlwUGF0aD4NCjxwYXRoIGZpbGw9IiMwMDI0N2QiIGQ9Ik0wLDBoMTIwMHY2MDBIMHoiLz4NCjxwYXRoIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxMjAiIGQ9Ik0wLDBoMTIwMHY2MDBIMHoiIGNsaXAtcGF0aD0idXJsKCN0KSIvPg0KPHBhdGggc3Ryb2tlPSIjY2YxNDJiIiBzdHJva2Utd2lkdGg9IjgwIiBkPSJNMCwwaDEyMDB2NjAwSDB6IiBjbGlwLXBhdGg9InVybCgjdCkiLz4NCjxwYXRoIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyMDAiIGQ9Ik02MDAsM0w2MDAsNjAzTTMsMzAwSDEyMDMiIGNsaXAtcGF0aD0idXJsKCN0KSIvPg0KPHBhdGggc3Ryb2tlPSIjY2YxNDJiIiBzdHJva2Utd2lkdGg9IjEyMCIgZD0iTTYwMCwzTDYwMCw2MDNNMywzMDBIMTIwMyIgY2xpcC1wYXRoPSJ1cmwoI3QpIi8+DQo8L3N2Zz4=');
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 14px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .success-message {
+            text-align: left;
+            padding: 0;
+        }
+
+        .success-message h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--text-color);
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .success-message p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="loginForm">
+        <div class="language-selector">
+            <button type="button" class="language-btn active" data-lang="nl">
+                <span class="flag nl"></span>
+                NL
+            </button>
+            <button type="button" class="language-btn" data-lang="en">
+                <span class="flag en"></span>
+                EN
+            </button>
+        </div>
+        <h1>Inloggen</h1>
+        
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">E-mailadres</label>
+                <input type="email" 
+                    id="email" 
+                    placeholder="Vul hier je e-mailadres in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="wachtwoord">Wachtwoord</label>
+                <input type="password" 
+                    id="wachtwoord" 
+                    placeholder="Vul hier je wachtwoord in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="wachtwoord-error"></div>
+            </div>
+
+            <div class="forgot-password">
+                <a href="#" id="forgot-link" onclick="showForm('resetForm')">Wachtwoord vergeten?</a>
+            </div>
+
+            <button type="submit" class="login-button">Inloggen</button>
+
+            <div class="register-text">
+                Nog geen account? <a href="#" onclick="showForm('registerForm')" class="register-link">Maak een nieuw account</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="registerForm" style="display: none;">
+        <div class="language-selector">
+            <button type="button" class="language-btn active" data-lang="nl">
+                <span class="flag nl"></span>
+                NL
+            </button>
+            <button type="button" class="language-btn" data-lang="en">
+                <span class="flag en"></span>
+                EN
+            </button>
+        </div>
+        <h1>Registreren</h1>
+        
+        <form id="register-form">
+            <div class="form-group">
+                <label for="voornaam">Voornaam</label>
+                <input type="text" 
+                    id="voornaam" 
+                    placeholder="Vul hier je voornaam in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="voornaam-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" 
+                    id="achternaam" 
+                    placeholder="Vul hier je achternaam in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="achternaam-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="register-email">E-mailadres</label>
+                <input type="email" 
+                    id="register-email" 
+                    placeholder="Vul hier je e-mailadres in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="register-email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="telefoon">Telefoonnummer</label>
+                <input type="tel" 
+                    id="telefoon" 
+                    placeholder="Vul hier je telefoonnummer in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="telefoon-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="new-password">Nieuw wachtwoord</label>
+                <input type="password" 
+                    id="new-password" 
+                    placeholder="Vul hier je wachtwoord in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="new-password-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Bevestig wachtwoord</label>
+                <input type="password" 
+                    id="confirm-password" 
+                    placeholder="Bevestig je wachtwoord" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="confirm-password-error"></div>
+            </div>
+
+            <button type="submit" class="login-button">Registreren</button>
+
+            <div class="register-text">
+                Heb je al een account? <a href="#" onclick="showForm('loginForm')" class="register-link">Log hier in</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="resetForm" style="display: none;">
+        <div class="language-selector">
+            <button type="button" class="language-btn active" data-lang="nl">
+                <span class="flag nl"></span>
+                NL
+            </button>
+            <button type="button" class="language-btn" data-lang="en">
+                <span class="flag en"></span>
+                EN
+            </button>
+        </div>
+        <h1 style="font-size: 18px; text-align: left;">Wachtwoord vergeten</h1>
+        <p>Voer je e-mailadres in om je wachtwoord te herstellen</p>
+        
+        <form id="reset-form">
+            <div class="form-group">
+                <label for="reset-email">E-mailadres</label>
+                <input type="email" 
+                    id="reset-email" 
+                    placeholder="Vul hier je e-mailadres in" 
+                    required
+                    oninvalid="this.setCustomValidity(document.documentElement.lang === 'nl' ? 'Vul dit veld in.' : 'Please fill out this field.')"
+                    oninput="this.setCustomValidity('')">
+                <div class="error-message" id="reset-email-error"></div>
+            </div>
+
+            <button type="submit" class="login-button">Wachtwoord herstellen</button>
+
+            <div class="register-text">
+                <a href="#" onclick="showForm('loginForm')" class="register-link">Terug naar inloggen</a>
+            </div>
+        </form>
+
+        <div id="reset-success" class="success-message"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const translations = {
+                nl: {
+                    title: 'Inloggen',
+                    registerTitle: 'Registreren',
+                    email: 'E-mailadres',
+                    password: 'Wachtwoord',
+                    firstName: 'Voornaam',
+                    lastName: 'Achternaam',
+                    phone: 'Telefoonnummer',
+                    confirmPassword: 'Bevestig wachtwoord',
+                    emailPlaceholder: 'Vul hier je e-mailadres in',
+                    passwordPlaceholder: 'Vul hier je wachtwoord in',
+                    phonePlaceholder: 'Vul hier je telefoonnummer in',
+                    confirmPasswordPlaceholder: 'Bevestig je wachtwoord',
+                    forgotPassword: 'Wachtwoord vergeten?',
+                    loginButton: 'Inloggen',
+                    registerButton: 'Registreren',
+                    noAccount: 'Nog geen account?',
+                    createAccount: 'Maak een nieuw account',
+                    haveAccount: 'Heb je al een account?',
+                    loginLink: 'Log hier in',
+                    backToLogin: 'Terug naar inloggen',
+                    reset: {
+                        title: 'Wachtwoord vergeten',
+                        description: 'Voer je e-mailadres in om je wachtwoord te herstellen',
+                        submit: 'Wachtwoord herstellen',
+                        success: {
+                            message: 'We hebben je een e-mail gestuurd met een link om je wachtwoord te vernieuwen.'
+                        }
+                    }
+                },
+                en: {
+                    title: 'Login',
+                    registerTitle: 'Register',
+                    email: 'Email address',
+                    password: 'Password',
+                    firstName: 'First name',
+                    lastName: 'Last name',
+                    phone: 'Phone number',
+                    confirmPassword: 'Confirm password',
+                    emailPlaceholder: 'Enter your email address',
+                    passwordPlaceholder: 'Enter your password',
+                    phonePlaceholder: 'Enter your phone number',
+                    confirmPasswordPlaceholder: 'Confirm your password',
+                    forgotPassword: 'Forgot password?',
+                    loginButton: 'Login',
+                    registerButton: 'Register',
+                    noAccount: 'Don\'t have an account?',
+                    createAccount: 'Create a new account',
+                    haveAccount: 'Already have an account?',
+                    loginLink: 'Login here',
+                    backToLogin: 'Back to login',
+                    reset: {
+                        title: 'Forgot password',
+                        description: 'Enter your email address to reset your password',
+                        submit: 'Reset password',
+                        success: {
+                            message: 'We have sent you an email with a link to reset your password.'
+                        }
+                    }
+                }
+            };
+
+            function updateLanguage(lang) {
+                const t = translations[lang];
+                document.documentElement.lang = lang;
+
+                // Update alle language buttons op alle forms
+                document.querySelectorAll('.language-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                // Update login form
+                document.querySelector('#loginForm h1').textContent = t.title;
+                document.querySelector('#loginForm label[for="email"]').textContent = t.email;
+                document.querySelector('#loginForm label[for="wachtwoord"]').textContent = t.password;
+                document.querySelector('#loginForm #email').placeholder = t.emailPlaceholder;
+                document.querySelector('#loginForm #wachtwoord').placeholder = t.passwordPlaceholder;
+                document.querySelector('#loginForm #forgot-link').textContent = t.forgotPassword;
+                document.querySelector('#loginForm .login-button').textContent = t.loginButton;
+                document.querySelector('#loginForm .register-text').innerHTML = 
+                    `${t.noAccount} <a href="#" onclick="showForm('registerForm')" class="register-link">${t.createAccount}</a>`;
+
+                // Update register form
+                document.querySelector('#registerForm h1').textContent = t.registerTitle;
+                document.querySelector('#registerForm label[for="voornaam"]').textContent = t.firstName;
+                document.querySelector('#registerForm label[for="achternaam"]').textContent = t.lastName;
+                document.querySelector('#registerForm label[for="register-email"]').textContent = t.email;
+                document.querySelector('#registerForm label[for="telefoon"]').textContent = t.phone;
+                document.querySelector('#registerForm label[for="new-password"]').textContent = t.password;
+                document.querySelector('#registerForm label[for="confirm-password"]').textContent = t.confirmPassword;
+                
+                // Update alle placeholders
+                document.querySelector('#registerForm #voornaam').placeholder = t.firstNamePlaceholder || t.firstName;
+                document.querySelector('#registerForm #achternaam').placeholder = t.lastNamePlaceholder || t.lastName;
+                document.querySelector('#registerForm #register-email').placeholder = t.emailPlaceholder;
+                document.querySelector('#registerForm #telefoon').placeholder = t.phonePlaceholder;
+                document.querySelector('#registerForm #new-password').placeholder = t.passwordPlaceholder;
+                document.querySelector('#registerForm #confirm-password').placeholder = t.confirmPasswordPlaceholder;
+                
+                document.querySelector('#registerForm .login-button').textContent = t.registerButton;
+                document.querySelector('#registerForm .register-text').innerHTML = 
+                    `${t.haveAccount} <a href="#" onclick="showForm('loginForm')" class="register-link">${t.loginLink}</a>`;
+
+                // Update reset form
+                document.querySelector('#resetForm h1').textContent = t.reset.title;
+                document.querySelector('#resetForm h1').style.fontSize = '18px';
+                document.querySelector('#resetForm h1').style.textAlign = 'left';
+                document.querySelector('#resetForm p').textContent = t.reset.description;
+                document.querySelector('#resetForm label[for="reset-email"]').textContent = t.email;
+                document.querySelector('#resetForm #reset-email').placeholder = t.emailPlaceholder;
+                document.querySelector('#resetForm .login-button').textContent = t.reset.submit;
+                document.querySelector('#resetForm .register-text a').textContent = t.backToLogin;
+
+                // Update het success bericht als het zichtbaar is
+                const successMessage = document.getElementById('reset-success');
+                if (successMessage.style.display === 'block') {
+                    successMessage.innerHTML = `
+                        <p style="font-size: 14px;">${t.reset.success.message}</p>
+                        <button onclick="showForm('loginForm')" class="login-button" style="margin-top: 24px; font-size: 14px;">${t.backToLogin}</button>
+                    `;
+                }
+            }
+
+            // Event listeners voor de taal knoppen
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    updateLanguage(lang);
+                });
+            });
+
+            // Initialiseer met Nederlandse taal
+            updateLanguage('nl');
+
+            // Update de reset form submit handler
+            document.getElementById('reset-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const lang = document.documentElement.lang;
+                const email = document.getElementById('reset-email').value;
+                
+                if (email) {
+                    // Verberg het formulier en de beschrijving
+                    document.querySelector('#resetForm h1').style.display = 'none';
+                    document.querySelector('#resetForm p').style.display = 'none';
+                    document.querySelector('#resetForm form').style.display = 'none';
+                    
+                    // Toon het success bericht zonder de titel (om "undefined" te voorkomen)
+                    const successMessage = document.getElementById('reset-success');
+                    const t = translations[lang];
+                    successMessage.innerHTML = `
+                        <p style="font-size: 14px;">${t.reset.success.message}</p>
+                        <button onclick="showForm('loginForm')" class="login-button" style="margin-top: 24px; font-size: 14px;">${t.backToLogin}</button>
+                    `;
+                    successMessage.style.display = 'block';
+                }
+            });
+        });
+
+        function showForm(formId) {
+            // Bewaar de huidige taal
+            const currentLang = document.documentElement.lang;
+
+            // Verberg alle forms
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('resetForm').style.display = 'none';
+
+            // Toon het gewenste form
+            document.getElementById(formId).style.display = 'block';
+
+            // Update de taal voor het nieuwe form
+            updateLanguage(currentLang);
+        }
+    </script>
+</body>
+</html> 

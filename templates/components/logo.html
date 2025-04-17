@@ -1,0 +1,77 @@
+{% load static %}
+
+<!-- PowerTaal Logo Component -->
+<div class="powertaal-logo">
+    <div class="logo-circle">
+        <span class="logo-text">Pt</span>
+    </div>
+    <div class="logo-name">PowerTaal</div>
+</div>
+
+<style>
+    .powertaal-logo {
+        display: flex;
+        align-items: center;
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .logo-circle {
+        width: 60px;
+        height: 60px;
+        background: #00b0f0; /* Blue circle background */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #ff6600; /* Orange border */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text {
+        color: white;
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        line-height: 1;
+        font-family: 'Bookerly', sans-serif;
+    }
+    
+    .logo-name {
+        color: #ff6600; /* Orange text */
+        font-size: 36px;
+        font-weight: bold;
+        margin-left: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+        }
+        
+        .logo-name {
+            font-size: 30px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 22px;
+        }
+        
+        .logo-name {
+            font-size: 24px;
+        }
+    }
+</style> 

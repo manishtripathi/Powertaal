@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% if CURRENT_LANGUAGE == 'nl' %}
+Registreren - PowerTaal
+{% elif CURRENT_LANGUAGE == 'en' %}
+Register - PowerTaal
+{% elif CURRENT_LANGUAGE == 'de' %}
+Registrieren - PowerTaal
+{% else %}
+Registreren - PowerTaal
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- Register Section -->
+<section class="register-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                {% if LANGUAGE_CODE == 'nl' %}
+                    {% include "language/nl/users/includes/form.html" with initial_form="registerForm" %}
+                {% elif LANGUAGE_CODE == 'en' %}
+                    {% include "language/en/users/includes/form.html" with initial_form="registerForm" %}
+                {% elif LANGUAGE_CODE == 'de' %}
+                    {% include "language/de/users/includes/form.html" with initial_form="registerForm" %}
+                {% elif LANGUAGE_CODE == 'ar' %}
+                    {% include "language/ar/users/includes/form.html" with initial_form="registerForm" %}
+                {% else %}
+                    {% include "language/nl/users/includes/form.html" with initial_form="registerForm" %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

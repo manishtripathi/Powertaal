@@ -1,0 +1,393 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}About Us - PowerTaal{% endblock %}
+
+{% block content %}
+<!-- About Hero Section -->
+<section class="about-hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="about-title">About PowerTaal</h1>
+                <p class="lead">Learn a new language at your own pace</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Content Section -->
+<section class="about-content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <!-- Missie Section -->
+                <div class="content-card mission-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <div class="icon-circle icon-circle-small">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <h2 class="section-title" style="font-size: 20px; margin-bottom: 8px;">Our Mission</h2>
+                            <p class="section-text" style="font-size: 14px; line-height: 1.4;">At PowerTaal, we believe that everyone can learn a new language, regardless of age or background. Our mission is to make language education accessible, effective, and enjoyable for everyone.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Verhaal Section -->
+                <div class="content-card story-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-10">
+                            <h2 class="section-title" style="font-size: 20px; margin-bottom: 8px;">Our Story</h2>
+                            <p class="section-text" style="font-size: 14px; line-height: 1.4;">PowerTaal emerged from a passion for languages and education. Our founders noticed that traditional language methods were often not effective enough and decided to create a platform that uses modern technology and proven learning methods.</p>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <div class="icon-circle icon-circle-small">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aanpak Section -->
+                <div class="content-card approach-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <div class="icon-circle icon-circle-small">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <h2 class="section-title" style="font-size: 20px; margin-bottom: 8px;">Our Approach</h2>
+                            <p class="section-text" style="font-size: 14px; line-height: 1.4;">What makes PowerTaal unique is our focus on practical language use. We believe in learning by doing, and therefore we offer interactive exercises that help you to learn words and sentences by typing, reading, and listening to them.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Waarden Section -->
+                <div class="content-card values-card">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="section-title text-center" style="font-size: 20px; margin-bottom: 10px;">Our Values</h2>
+                            <div class="row mt-3">
+                                <div class="col-md-6 mb-3">
+                                    <div class="value-item">
+                                        <div class="value-icon value-icon-small">
+                                            <i class="fas fa-universal-access"></i>
+                                        </div>
+                                        <h3>Accessibility</h3>
+                                        <p>Language education should be available to everyone.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="value-item">
+                                        <div class="value-icon value-icon-small">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <h3>Effectiveness</h3>
+                                        <p>Our methods are based on scientific research into language acquisition.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="value-item">
+                                        <div class="value-icon value-icon-small">
+                                            <i class="fas fa-smile"></i>
+                                        </div>
+                                        <h3>Fun</h3>
+                                        <p>Learning should be fun because it promotes motivation and retention.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="value-item">
+                                        <div class="value-icon value-icon-small">
+                                            <i class="fas fa-user-cog"></i>
+                                        </div>
+                                        <h3>Personalization</h3>
+                                        <p>Everyone learns differently, so we offer flexible learning paths.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Section -->
+                <div class="content-card contact-card text-center">
+                    <h2 class="section-title" style="font-size: 20px; margin-bottom: 8px;">Contact</h2>
+                    <p class="section-text" style="font-size: 14px; margin-bottom: 10px;">Do you have questions or suggestions? Feel free to contact us.</p>
+                    <a href="{% url 'main:contact' %}" class="btn contact-btn">
+                        <i class="fas fa-envelope mr-2"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Hero Section Styles */
+    .about-hero-section {
+        background-color: #00b0f0;
+        padding: 25px 0;
+        color: white;
+        margin-bottom: 20px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .about-hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 102, 153, 0.6) 0%, rgba(0, 176, 240, 0.3) 100%);
+        z-index: 1;
+    }
+    
+    .about-hero-section .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .about-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .about-hero-section .lead {
+        font-size: 18px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Content Section Styles */
+    .about-content-section {
+        padding: 15px 0 30px;
+    }
+    
+    .content-card {
+        background-color: white;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .content-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .section-title {
+        color: #3d5a73;
+        font-weight: bold;
+        margin-bottom: 15px;
+        position: relative;
+        font-size: 24px;
+    }
+    
+    .section-text {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    /* Icon Styles */
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+        background-color: #00b0f0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    
+    .icon-circle-small {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .icon-circle:hover {
+        transform: scale(1.05);
+    }
+    
+    .icon-circle i {
+        font-size: 32px;
+        color: white;
+    }
+    
+    .icon-circle-small i {
+        font-size: 24px;
+    }
+    
+    /* Card Color Variations */
+    .mission-card {
+        border-top: 5px solid #00b0f0;
+    }
+    
+    .story-card {
+        border-top: 5px solid #3d5a73;
+    }
+    
+    .approach-card {
+        border-top: 5px solid #5a3d60;
+    }
+    
+    .values-card {
+        border-top: 5px solid #c3976b;
+    }
+    
+    .contact-card {
+        border-top: 5px solid #2ECC71;
+        padding: 15px;
+    }
+    
+    /* Values Section Styles */
+    .value-item {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        height: 100%;
+        transition: transform 0.3s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .value-item:hover {
+        transform: translateY(-3px);
+    }
+    
+    .value-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #00b0f0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 8px;
+    }
+    
+    .value-icon-small {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .value-item:nth-child(1) .value-icon {
+        background-color: #00b0f0;
+    }
+    
+    .value-item:nth-child(2) .value-icon {
+        background-color: #3d5a73;
+    }
+    
+    .value-item:nth-child(3) .value-icon {
+        background-color: #5a3d60;
+    }
+    
+    .value-item:nth-child(4) .value-icon {
+        background-color: #c3976b;
+    }
+    
+    .value-icon i {
+        font-size: 16px;
+        color: white;
+    }
+    
+    .value-item h3 {
+        font-size: 16px;
+        color: #3d5a73;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    
+    .value-item p {
+        color: #555;
+        text-align: center;
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+    
+    /* Contact Button */
+    .contact-btn {
+        background-color: #2ECC71;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 8px 20px;
+        border-radius: 50px;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .contact-btn:hover {
+        background-color: #27AE60;
+        color: white;
+        transform: scale(1.03);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.7s;
+        z-index: -1;
+    }
+    
+    .contact-btn:hover::before {
+        left: 100%;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .about-title {
+            font-size: 32px;
+        }
+        
+        .about-hero-section .lead {
+            font-size: 18px;
+        }
+        
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+        }
+        
+        .icon-circle i {
+            font-size: 28px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 22px;
+        }
+        
+        .content-card {
+            padding: 15px;
+        }
+    }
+</style>
+{% endblock %} 

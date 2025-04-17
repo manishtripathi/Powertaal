@@ -1,0 +1,340 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}اختر اللغة - PowerTaal{% endblock %}
+
+{% block content %}
+<div class="language-selection-container">
+    <div class="language-selection-header">
+        <h1 class="language-selection-title">اختر اللغة</h1>
+        <p class="language-selection-subtitle">اختر اللغة التي ترغب في التدرب عليها</p>
+    </div>
+    
+    <div class="language-selection-grid">
+        <div class="language-card" data-language="nl">
+            <div class="language-card-inner">
+                <div class="language-card-front">
+                    <div class="language-flag">
+                        <img src="{% static 'img/flags/nl.svg' %}" alt="Dutch Flag">
+                    </div>
+                    <h3 class="language-name">الهولندية</h3>
+                </div>
+                <div class="language-card-back">
+                    <h4>الهولندية</h4>
+                    <p>تعلم اللغة الهولندية مع تمارين تفاعلية وتدريبات عملية.</p>
+                    <div class="difficulty">
+                        <span>الصعوبة:</span>
+                        <div class="difficulty-level">
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button class="select-language-btn" data-language="nl">اختر</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="language-card" data-language="en">
+            <div class="language-card-inner">
+                <div class="language-card-front">
+                    <div class="language-flag">
+                        <img src="{% static 'img/flags/gb.svg' %}" alt="English Flag">
+                    </div>
+                    <h3 class="language-name">الإنجليزية</h3>
+                </div>
+                <div class="language-card-back">
+                    <h4>الإنجليزية</h4>
+                    <p>تعلم اللغة الإنجليزية مع تمارين تفاعلية وتدريبات عملية.</p>
+                    <div class="difficulty">
+                        <span>الصعوبة:</span>
+                        <div class="difficulty-level">
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button class="select-language-btn" data-language="en">اختر</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="language-card" data-language="de">
+            <div class="language-card-inner">
+                <div class="language-card-front">
+                    <div class="language-flag">
+                        <img src="{% static 'img/flags/de.svg' %}" alt="German Flag">
+                    </div>
+                    <h3 class="language-name">الألمانية</h3>
+                </div>
+                <div class="language-card-back">
+                    <h4>الألمانية</h4>
+                    <p>تعلم اللغة الألمانية مع تمارين تفاعلية وتدريبات عملية.</p>
+                    <div class="difficulty">
+                        <span>الصعوبة:</span>
+                        <div class="difficulty-level">
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button class="select-language-btn" data-language="de">اختر</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="action-row">
+        <a href="{% url 'main:learn' %}" class="action-button learn-button">
+            <i class="fas fa-graduation-cap"></i>
+            تعلم
+        </a>
+        <a href="{% url 'main:type' %}" class="action-button type-button">
+            <i class="fas fa-keyboard"></i>
+            تدرب على الكتابة
+        </a>
+    </div>
+</div>
+
+<style>
+    .language-selection-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    
+    .language-selection-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    
+    .language-selection-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .language-selection-subtitle {
+        font-size: 18px;
+        color: #666;
+    }
+    
+    .language-selection-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    
+    .language-card {
+        perspective: 1000px;
+        height: 250px;
+        cursor: pointer;
+    }
+    
+    .language-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+    
+    .language-card:hover .language-card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .language-card-front, .language-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .language-card-front {
+        background-color: #fff;
+    }
+    
+    .language-card-back {
+        background-color: #00b0f0;
+        color: white;
+        transform: rotateY(180deg);
+        text-align: center;
+    }
+    
+    .language-flag {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 15px;
+        border: 3px solid #f0f0f0;
+    }
+    
+    .language-flag img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .language-name {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .language-card-back h4 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    .language-card-back p {
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+    
+    .difficulty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .difficulty span {
+        margin-bottom: 5px;
+    }
+    
+    .difficulty-level {
+        display: flex;
+    }
+    
+    .difficulty-level span {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 0 3px;
+    }
+    
+    .difficulty-level span.active {
+        background-color: white;
+    }
+    
+    .select-language-btn {
+        background-color: white;
+        color: #00b0f0;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .select-language-btn:hover {
+        background-color: #f0f0f0;
+        transform: translateY(-2px);
+    }
+    
+    .action-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .action-button {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+    
+    .action-button i {
+        margin-right: 8px;
+    }
+    
+    .learn-button {
+        background-color: #00b0f0;
+        color: white;
+    }
+    
+    .type-button {
+        background-color: #333;
+        color: white;
+    }
+    
+    .action-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+        .language-selection-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+        
+        .language-selection-title {
+            font-size: 30px;
+        }
+        
+        .language-flag {
+            width: 80px;
+            height: 80px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle language selection
+        const languageCards = document.querySelectorAll('.language-card');
+        const selectButtons = document.querySelectorAll('.select-language-btn');
+        
+        // Function to set the selected language
+        function setLanguage(language) {
+            // Store the selected language in localStorage
+            localStorage.setItem('selectedLanguage', language);
+            
+            // Redirect to the appropriate page based on the selected language
+            window.location.href = `/set-language/${language}/`;
+        }
+        
+        // Add click event to the select buttons
+        selectButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent the card flip when clicking the button
+                const language = this.getAttribute('data-language');
+                setLanguage(language);
+            });
+        });
+        
+        // Add click event to the language cards (for mobile devices)
+        languageCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // This is just for the flip effect, the actual selection happens with the button
+            });
+        });
+    });
+</script>
+{% endblock %} 

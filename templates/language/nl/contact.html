@@ -1,0 +1,442 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Contact - PowerTaal{% endblock %}
+
+{% block content %}
+<!-- Contact Hero Section -->
+<section class="contact-hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="contact-title">Contact</h1>
+                <p class="lead">Heeft u vragen of suggesties? Wij staan voor u klaar!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Content Section -->
+<section class="contact-content-section">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Information Card -->
+            <div class="col-lg-5 mb-3">
+                <div class="contact-card info-card">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="fas fa-address-card"></i> Contactgegevens</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="contact-item">
+                            <div class="icon-container">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-container">
+                                <h3>Adres</h3>
+                                <p>Taalstraat 123, 1234 AB Amsterdam</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon-container">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-container">
+                                <h3>Telefoon</h3>
+                                <p>+31 20 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon-container">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-container">
+                                <h3>E-mail</h3>
+                                <p>info@powertaal.nl</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon-container">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-container">
+                                <h3>Openingstijden</h3>
+                                <p>Maandag - Vrijdag: 9:00 - 17:00</p>
+                                <p class="mb-0">Zaterdag - Zondag: Gesloten</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <h3 class="social-title"><i class="fas fa-share-alt"></i> Volg ons</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form Card -->
+            <div class="col-lg-7">
+                <div class="contact-card form-card">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="fas fa-paper-plane"></i> Stuur ons een bericht</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" class="contact-form">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="name">Naam</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Uw naam" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="email">E-mail</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Uw e-mailadres" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-2">
+                                <div class="form-group">
+                                    <label for="subject">Onderwerp</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Onderwerp van uw bericht" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label for="message">Bericht</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-comment-alt"></i></span>
+                                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Typ hier uw bericht..." required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn submit-btn">
+                                    <i class="fas fa-paper-plane me-2"></i> Versturen
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Hero Section Styles */
+    .contact-hero-section {
+        background-color: #00b0f0;
+        padding: 25px 0;
+        color: white;
+        margin-bottom: 20px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .contact-hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 102, 153, 0.6) 0%, rgba(0, 176, 240, 0.3) 100%);
+        z-index: 1;
+    }
+    
+    .contact-hero-section .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .contact-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-hero-section .lead {
+        font-size: 18px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Content Section Styles */
+    .contact-content-section {
+        padding: 15px 0 30px;
+    }
+    
+    /* Card Styles */
+    .contact-card {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .contact-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .card-header {
+        background-color: #3d5a73;
+        color: white;
+        padding: 12px 15px;
+        border-bottom: none;
+    }
+    
+    .card-title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .card-title i {
+        margin-right: 8px;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+    
+    .card-footer {
+        background-color: #f8f9fa;
+        border-top: 1px solid #eee;
+        padding: 15px;
+    }
+    
+    /* Contact Info Styles */
+    .contact-item {
+        display: flex;
+        margin-bottom: 15px;
+    }
+    
+    .contact-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .icon-container {
+        width: 40px;
+        height: 40px;
+        background-color: #00b0f0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 12px;
+        flex-shrink: 0;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .icon-container i {
+        color: white;
+        font-size: 16px;
+    }
+    
+    .info-container {
+        flex-grow: 1;
+    }
+    
+    .info-container h3 {
+        font-size: 16px;
+        color: #3d5a73;
+        margin-bottom: 3px;
+    }
+    
+    .info-container p {
+        color: #555;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    
+    /* Social Icons */
+    .social-title {
+        font-size: 16px;
+        color: #3d5a73;
+        margin-bottom: 10px;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-icon:nth-child(1) {
+        background-color: #3b5998; /* Facebook */
+    }
+    
+    .social-icon:nth-child(2) {
+        background-color: #1da1f2; /* Twitter */
+    }
+    
+    .social-icon:nth-child(3) {
+        background-color: #0077b5; /* LinkedIn */
+    }
+    
+    .social-icon:nth-child(4) {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); /* Instagram */
+    }
+    
+    .social-icon:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* Form Styles */
+    .form-card .card-header {
+        background-color: #5a3d60;
+    }
+    
+    .form-group label {
+        font-weight: 600;
+        color: #3d5a73;
+        margin-bottom: 5px;
+        display: block;
+        font-size: 14px;
+    }
+    
+    .input-group-text {
+        background-color: #00b0f0;
+        color: white;
+        border: none;
+        width: 36px;
+        justify-content: center;
+    }
+    
+    .form-control {
+        border: 1px solid #ddd;
+        border-radius: 0 4px 4px 0;
+        padding: 8px 12px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+    
+    .form-control:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 176, 240, 0.25);
+        border-color: #00b0f0;
+    }
+    
+    textarea.form-control {
+        resize: none;
+    }
+    
+    .submit-btn {
+        background-color: #3d5a73;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 8px 25px;
+        border-radius: 50px;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .submit-btn:hover {
+        background-color: #4d7a93;
+        color: white;
+        transform: scale(1.03);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    }
+    
+    .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.7s;
+        z-index: -1;
+    }
+    
+    .submit-btn:hover::before {
+        left: 100%;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .contact-title {
+            font-size: 28px;
+        }
+        
+        .contact-hero-section .lead {
+            font-size: 16px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+        }
+        
+        .icon-container {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .icon-container i {
+            font-size: 14px;
+        }
+        
+        .info-container h3 {
+            font-size: 15px;
+        }
+        
+        .card-body {
+            padding: 15px;
+        }
+    }
+</style>
+{% endblock %} 

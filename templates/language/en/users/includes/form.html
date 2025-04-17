@@ -1,0 +1,321 @@
+{% load static %}
+
+<style>
+    :root {
+        --primary-color: #4169E1;
+        --primary-hover: #3a5ecc;
+        --background-color: #f5f7fa;
+        --form-bg: #ffffff;
+        --text-color: #1e2a3b;
+        --text-light: #6c757d;
+        --border-color: #e0e0e0;
+        --input-bg: #f5f7fa;
+        --button-primary: #4169E1;
+        --button-hover: #3a5ecc;
+        --link-color: #4169E1;
+    }
+
+    .form-container {
+        background-color: var(--form-bg);
+        padding: 40px;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e0e0e0;
+    }
+
+    .form-title {
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: var(--text-color);
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Special styling for the register title */
+    #registerForm .form-title {
+        padding-right: 40px; /* This shifts the text visually to the left */
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        color: var(--text-color);
+        background-color: var(--input-bg);
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.1);
+    }
+
+    .form-input::placeholder {
+        color: #a0a0a0;
+    }
+
+    .forgot-password {
+        text-align: left;
+        margin: 8px 0 24px;
+    }
+
+    .forgot-password a {
+        color: var(--link-color);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+
+    .login-button {
+        background-color: var(--button-primary);
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 24px;
+    }
+
+    .login-button:hover {
+        background-color: var(--button-hover);
+    }
+
+    .register-text {
+        margin-top: 20px;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 14px;
+    }
+
+    .register-link {
+        color: var(--link-color);
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 5px;
+    }
+
+    .register-link:hover {
+        text-decoration: underline;
+    }
+
+    .language-selector {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .language-btn {
+        padding: 8px 12px;
+        border: none;
+        background: var(--input-bg);
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-light);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .language-btn.active {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .language-btn:hover:not(.active) {
+        background: #e9ecef;
+    }
+
+    .language-btn .flag {
+        width: 24px;
+        height: 18px;
+        border-radius: 2px;
+        display: inline-block;
+        background-size: cover;
+    }
+
+    .flag.nl {
+        background: linear-gradient(to bottom,
+            #AE1C28 33.33%,
+            #FFFFFF 33.33%, #FFFFFF 66.66%,
+            #21468B 66.66%);
+    }
+
+    .flag.en {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+DQo8Y2xpcFBhdGggaWQ9InQiPg0KPHBhdGggZD0iTTAsMGgxMjAwdjYwMEgweiIvPg0KPC9jbGlwUGF0aD4NCjxwYXRoIGZpbGw9IiMwMDI0N2QiIGQ9Ik0wLDBoMTIwMHY2MDBIMHoiLz4NCjxwYXRoIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxMjAiIGQ9Ik0wLDBoMTIwMHY2MDBIMHoiIGNsaXAtcGF0aD0idXJsKCN0KSIvPg0KPHBhdGggc3Ryb2tlPSIjY2YxNDJiIiBzdHJva2Utd2lkdGg9IjgwIiBkPSJNMCwwaDEyMDB2NjAwSDB6IiBjbGlwLXBhdGg9InVybCgjdCkiLz4NCjxwYXRoIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyMDAiIGQ9Ik02MDAsM0w2MDAsNjAzTTMsMzAwSDEyMDMiIGNsaXAtcGF0aD0idXJsKCN0KSIvPg0KPHBhdGggc3Ryb2tlPSIjY2YxNDJiIiBzdHJva2Utd2lkdGg9IjEyMCIgZD0iTTYwMCwzTDYwMCw2MDNNMywzMDBIMTIwMyIgY2xpcC1wYXRoPSJ1cmwoI3QpIi8+DQo8L3N2Zz4=');
+    }
+
+    .flag.de {
+        background: linear-gradient(to bottom, 
+            #000000 33.33%, 
+            #DD0000 33.33%, #DD0000 66.66%, 
+            #FFCE00 66.66%);
+    }
+</style>
+
+<!-- Login Form -->
+<div id="loginForm" style="display: {% if initial_form == 'loginForm' or not initial_form %}block{% else %}none{% endif %};" class="form-container">
+    <div class="language-selector">
+        <a href="/force-dutch/" class="language-btn">
+            <span class="flag nl"></span>
+            NL
+        </a>
+        <a href="/set-language/en/" class="language-btn active">
+            <span class="flag en"></span>
+            EN
+        </a>
+        <a href="/set-language/de/" class="language-btn">
+            <span class="flag de"></span>
+            DE
+        </a>
+    </div>
+
+    <h1 class="form-title">Login</h1>
+    
+    <form method="POST" action="/users/login/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" id="email" name="username" placeholder="Enter your email address" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required class="form-input">
+        </div>
+        
+        <div class="forgot-password">
+            <a href="/users/password-reset/">Forgot password?</a>
+        </div>
+        
+        <button type="submit" class="login-button">Login</button>
+    </form>
+    
+    <div class="register-text">
+        <span>Don't have an account yet?</span>
+        <a href="/users/register/" class="register-link">Create a new account</a>
+    </div>
+</div>
+
+<!-- Register Form -->
+<div id="registerForm" style="display: {% if initial_form == 'registerForm' %}block{% else %}none{% endif %};" class="form-container">
+    <div class="language-selector">
+        <a href="/force-dutch/" class="language-btn">
+            <span class="flag nl"></span>
+            NL
+        </a>
+        <a href="/set-language/en/" class="language-btn active">
+            <span class="flag en"></span>
+            EN
+        </a>
+        <a href="/set-language/de/" class="language-btn">
+            <span class="flag de"></span>
+            DE
+        </a>
+    </div>
+
+    <h1 class="form-title">Register</h1>
+    
+    <form method="POST" action="/users/register/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="reg-firstname" class="form-label">First name</label>
+            <input type="text" id="reg-firstname" name="first_name" placeholder="First name" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+            <label for="reg-lastname" class="form-label">Last name</label>
+            <input type="text" id="reg-lastname" name="last_name" placeholder="Last name" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+            <label for="reg-email" class="form-label">Email address</label>
+            <input type="email" id="reg-email" name="email" placeholder="Email address" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+            <label for="reg-password" class="form-label">Password</label>
+            <input type="password" id="reg-password" name="password1" placeholder="Password" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+            <label for="reg-confirm-password" class="form-label">Confirm password</label>
+            <input type="password" id="reg-confirm-password" name="password2" placeholder="Confirm password" required class="form-input">
+        </div>
+        
+        <button type="submit" class="login-button">Register</button>
+    </form>
+    
+    <div class="register-text">
+        <span>Already have an account?</span>
+        <a href="/users/login/" class="register-link">Login</a>
+    </div>
+</div>
+
+<!-- Password Reset Form -->
+<div id="resetForm" style="display: {% if initial_form == 'resetForm' %}block{% else %}none{% endif %};" class="form-container">
+    <div class="language-selector">
+        <a href="/force-dutch/" class="language-btn">
+            <span class="flag nl"></span>
+            NL
+        </a>
+        <a href="/set-language/en/" class="language-btn active">
+            <span class="flag en"></span>
+            EN
+        </a>
+        <a href="/set-language/de/" class="language-btn">
+            <span class="flag de"></span>
+            DE
+        </a>
+    </div>
+
+    <h1 class="form-title">Forgot Password</h1>
+    
+    <form method="POST" action="/users/password-reset/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="reset-email" class="form-label">Email address</label>
+            <input type="email" id="reset-email" name="email" placeholder="Email address" required class="form-input">
+        </div>
+        
+        <button type="submit" class="login-button">Reset Password</button>
+    </form>
+    
+    <div class="register-text">
+        <span>Remembered it?</span>
+        <a href="/users/login/" class="register-link">Back to login</a>
+    </div>
+</div> 

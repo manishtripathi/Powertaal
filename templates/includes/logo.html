@@ -1,0 +1,112 @@
+<!-- PowerTaal Logo Component -->
+<div class="powertaal-logo">
+    <div class="logo-container">
+        <div class="logo-circle">
+            <div class="logo-text">PT</div>
+        </div>
+        <div class="brand-name">PowerTaal</div>
+    </div>
+</div>
+
+<style>
+    .powertaal-logo {
+        display: inline-block;
+    }
+    
+    .powertaal-logo .logo-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .powertaal-logo .logo-circle {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #ff6600;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid white;
+        overflow: hidden;
+    }
+    
+    .powertaal-logo .logo-circle::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 50%;
+        border: 3px solid #ff6600;
+        box-shadow: inset 0 0 0 2px white;
+    }
+    
+    .powertaal-logo .logo-circle::before {
+        content: '';
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #00b0f0;
+        z-index: 1;
+    }
+    
+    .powertaal-logo .logo-text {
+        position: relative;
+        z-index: 2;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        font-family: 'Bookerly', sans-serif;
+    }
+    
+    .powertaal-logo .brand-name {
+        margin-left: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #ff6600;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+    
+    /* Verschillende groottes */
+    .powertaal-logo.logo-small .logo-circle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .powertaal-logo.logo-small .logo-circle::before {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .powertaal-logo.logo-small .logo-text {
+        font-size: 16px;
+    }
+    
+    .powertaal-logo.logo-small .brand-name {
+        font-size: 20px;
+    }
+    
+    .powertaal-logo.logo-large .logo-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .powertaal-logo.logo-large .logo-circle::before {
+        width: 64px;
+        height: 64px;
+    }
+    
+    .powertaal-logo.logo-large .logo-text {
+        font-size: 32px;
+    }
+    
+    .powertaal-logo.logo-large .brand-name {
+        font-size: 36px;
+    }
+</style> 

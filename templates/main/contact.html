@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% if CURRENT_LANGUAGE == 'nl' %}
+Contact - PowerTaal
+{% elif CURRENT_LANGUAGE == 'en' %}
+Contact - PowerTaal
+{% elif CURRENT_LANGUAGE == 'de' %}
+Kontakt - PowerTaal
+{% else %}
+Contact - PowerTaal
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if CURRENT_LANGUAGE == 'nl' %}
+    {% include "language/nl/contact.html" %}
+{% elif CURRENT_LANGUAGE == 'en' %}
+    {% include "language/en/contact.html" %}
+{% elif CURRENT_LANGUAGE == 'de' %}
+    {% include "language/de/contact.html" %}
+{% else %}
+    {% include "language/nl/contact.html" %}
+{% endif %}
+{% endblock %} 

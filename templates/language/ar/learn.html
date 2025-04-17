@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}التعلم - PowerTaal{% endblock %}
+
+{% block content %}
+<!-- Learning Hero Section -->
+<section class="learning-hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="learning-title">التعلم</h1>
+                <p class="lead">أنت الآن تتعلم {{ target_lang }} من {{ source_lang }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Learning Content Section -->
+<section class="learning-content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="learning-card">
+                    <h2>تعلم الكلمات</h2>
+                    <p>هنا يمكنك تعلم الكلمات في مجموعة اللغات التي اخترتها.</p>
+                    
+                    <div class="word-list mt-4">
+                        <div class="word-item">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="source-word">كلمة {{ source_lang }}</div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="arrow">→</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="target-word">كلمة {{ target_lang }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Placeholder for more words -->
+                        <div class="placeholder-text text-center mt-4">
+                            <p>هذه الصفحة قيد التطوير. قريبًا ستتمكن من تعلم الكلمات هنا.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="actions text-center mt-4">
+                        <a href="{% url 'main:select-language' %}" class="btn btn-secondary">العودة إلى اختيار اللغة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .learning-hero-section, .learning-content-section {
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .learning-card {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+    
+    .word-item {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .source-word, .target-word {
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        text-align: center;
+    }
+    
+    .arrow {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+    
+    .placeholder-text {
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+    }
+    
+    .text-center {
+        text-align: center !important;
+    }
+</style>
+{% endblock %} 

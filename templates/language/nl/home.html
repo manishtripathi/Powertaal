@@ -1,0 +1,395 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}PowerTaal - {% trans "Spelenderwijs woorden leren & schrijven" %}{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Slideshow -->
+<section class="hero-section">
+    <div class="container">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="{% static 'img/slide-1.jpg' %}" alt="Slide 1">
+                <div class="slide-text-container">
+                    <h1 class="hero-title">{% trans "Spelenderwijs woorden leren & schrijven" %}</h1>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="{% static 'img/slide-2.jpg' %}" alt="Slide 2">
+                <div class="slide-text-container">
+                    <h1 class="hero-title">{% trans "Spelenderwijs woorden leren & schrijven" %}</h1>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="{% static 'img/slide-3.jpg' %}" alt="Slide 3">
+                <div class="slide-text-container">
+                    <h1 class="hero-title">{% trans "Spelenderwijs woorden leren & schrijven" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Options Section -->
+<section class="options-section">
+    <div class="container">
+        <h2 class="option-title">{% trans "Stap 1:" %} <span style="color: #FF6600;">{% trans "Bij Powertaal" %}</span> <span style="color: #00b0f0;">{% trans "zijn er twee opties:" %}</span></h2>
+        <div class="row tight-row">
+            <div class="col-md-6 mb-4">
+                <div class="option-card standard">
+                    <div class="card-ribbon">{% trans "STANDAARD" %}</div>
+                    <h3><span class="highlight">{% trans "HELEMAAL GRATIS EN ZONDER REGISTRATIE." %}</span></h3>
+                    <p>{% trans "Als u snel en spelenderwijs een nieuwe taal wilt leren. Dit kan in uw eigen tempo met een verschillende effectieve oefeningen. Zo kunt u oefenen met een groot aantal woorden in verschillende talen, waarbij u snel een verbetering in uw taalvaardigheid zult ontwikkelen. Aan het einde van elk spel ziet u de score op het scorebord." %}</p>
+                    <p class="mb-3"><strong>{% trans "Meer lezen..." %}</strong></p>
+                    <div class="text-center">
+                        <a href="{% url 'main:select-language' %}" class="btn btn-start">{% trans "Start nu" %}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="option-card advanced">
+                    <div class="card-ribbon">{% trans "GEVORDERD" %}</div>
+                    <h3><span class="highlight">{% trans "UW EIGEN ACCOUNT VOOR MAAR" %} € 7,99.</span></h3>
+                    <p>{% trans "Binnen uw eigen dashboard en trainingsomgeving hebt u ongelimiteerd toegang tot alles wat Powertaal te bieden heeft. Een uitgebreidere set van woorden én zinnen met meer trainingsopties. U kunt bijvoorbeeld oefenen met woorden + de bijbehorende lidwoorden en u kunt een dictee maken. Elke maand er nieuwe woorden en zinnen om mee te oefenen." %}</p>
+                    <p class="mb-3"><strong>{% trans "Meer lezen..." %}</strong></p>
+                    <div class="text-center">
+                        <a href="{% url 'users:login' %}" class="btn btn-start">{% trans "Inloggen" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Welcome Section -->
+<section class="welcome-section" style="padding: 0; margin: 0; background: transparent; position: relative; border-top: 3px solid rgb(63, 84, 85); border-bottom: none;">
+    <div class="container" style="position: relative; z-index: 2; text-align: center; max-width: 900px; padding-top: 10px; padding-bottom: 10px; background-color: #e8f4f8;">
+        <h2 class="welcome-title" style="font-size: 32px; font-weight: bold; color: #FF6600; margin-top: 0; margin-bottom: 15px; text-align: center; position: relative; display: inline-block; letter-spacing: 1px;">{% trans "WELKOM BIJ POWERTAAL" %}</h2>
+        <p class="welcome-text" style="font-size: 17px; line-height: 1.6; color: #333; margin: 0 auto; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);">{% trans "Dé plek om in uw eigen tempo en met uw eigen input een nieuwe taal te leren. Voor elke taal vormen woorden de basis. Leer die woorden hier door ze te lezen, te typen, op te schrijven of en te beluisteren. Door herhaling en diversiteit tijdens de training zal het u makkelijker afgaan dan bij vele andere methodes." %} <strong class="highlight-text" style="color: #FF6600; font-weight: bold; position: relative; display: inline-block;">{% trans "U bepaalt zelf het tempo" %}</strong>.</p>
+    </div>
+</section>
+
+<style>
+    /* Slideshow styling */
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+        padding: 10px 0;
+        background-color: #f5f5f5;
+        margin-bottom: 10px;
+    }
+    
+    .slideshow-container {
+        width: 100%;
+        max-width: 1140px;
+        position: relative;
+        margin: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        height: 350px; /* Zorg ervoor dat de container een vaste hoogte heeft */
+    }
+    
+    .slide {
+        width: 100%;
+        /* display: none; */ /* Verwijder deze regel zodat de slides zichtbaar blijven */
+        position: relative;
+        height: 100%;
+    }
+    
+    .slide img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        filter: brightness(0.9);
+        transition: transform 0.5s ease;
+    }
+    
+    .slide:hover img {
+        transform: scale(1.03);
+    }
+    
+    .slide-text-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(to right, rgba(0, 102, 153, 0.6), rgba(255, 102, 0, 0.6));
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        padding: 0 15px;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    
+    @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+    }
+    
+    /* Styling voor de optiekaarten */
+    .options-section {
+        padding: 20px 0 0;
+        background-color: white;
+    }
+    
+    .option-title {
+        margin-bottom: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #FF6600 0%, #00b0f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 5px;
+    }
+    
+    .option-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #FF6600 0%, #00b0f0 100%);
+    }
+    
+    .option-card {
+        height: 100%;
+        border-radius: 20px;
+        padding: 25px 25px 20px;
+        color: white;
+        position: relative;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 3px solid white;
+    }
+    
+    .option-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    }
+    
+    .option-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: #FF6600;
+    }
+    
+    .option-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+    }
+    
+    .option-card.standard {
+        background: linear-gradient(135deg, #00b0f0 0%, #0077be 100%);
+        box-shadow: 0 0 0 3px #00b0f0, 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .option-card.advanced {
+        background: linear-gradient(135deg, #006699 0%, #004466 100%);
+        box-shadow: 0 0 0 3px #006699, 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .option-card.standard::after {
+        background: #00b0f0;
+    }
+    
+    .option-card.advanced::after {
+        background: #FF6600;
+    }
+    
+    .card-ribbon {
+        position: absolute;
+        top: 15px;
+        right: -35px;
+        background: #FF6600;
+        color: white;
+        font-weight: bold;
+        padding: 5px 40px;
+        transform: rotate(45deg);
+        font-size: 14px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+    }
+    
+    .option-card.advanced .card-ribbon {
+        background: #00b0f0;
+    }
+    
+    .option-card h3 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    .option-card .highlight {
+        font-weight: normal;
+    }
+    
+    .option-card p {
+        font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+    
+    .btn-start {
+        background: #3d5a73;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 15px 40px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 250px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        border: none;
+        text-transform: none;
+    }
+    
+    .btn-start:hover {
+        background: #4d7a93;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+    
+    .option-card.advanced .btn-start {
+        background: #5a3d60;
+    }
+    
+    .option-card.advanced .btn-start:hover {
+        background: #7a5d80;
+    }
+    
+    .btn-start::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.7s;
+        z-index: -1;
+    }
+    
+    .btn-start:hover::before {
+        left: 100%;
+    }
+    
+    /* Welcome section styling */
+    .welcome-section {
+        padding: 25px 0;
+        background: linear-gradient(to right, #f0f7fc, #e6f2fa);
+        position: relative;
+        margin-top: -15px;
+        border-top: 4px solid #006699;
+        border-bottom: 4px solid #FF6600;
+    }
+    
+    .welcome-section .container {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 900px;
+    }
+    
+    .welcome-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #006699;
+        margin-bottom: 15px;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+        letter-spacing: 1px;
+    }
+    
+    .welcome-title::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, #FF6600, #00b0f0);
+        margin: 10px auto 0;
+        border-radius: 3px;
+    }
+    
+    .welcome-text {
+        font-size: 17px;
+        line-height: 1.6;
+        color: #333;
+        margin: 0 auto;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+    }
+    
+    .highlight-text {
+        color: #FF6600;
+        font-weight: bold;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .highlight-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #FF6600;
+    }
+
+    .col-md-6.mb-4 {
+        margin-bottom: 0 !important;
+    }
+
+    .tight-row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .tight-row > [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
+
+<!-- We verwijderen de bestaande slideshow JavaScript code omdat we nu de geavanceerde slider-animation.js gebruiken -->
+{% endblock %} 

@@ -1,0 +1,103 @@
+# Dutch translation for PowerTaal
+# This file is distributed under the same license as the PowerTaal package.
+msgid ""
+msgstr ""
+"Project-Id-Version: PowerTaal 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-15 12:00+0000\n"
+"PO-Revision-Date: 2023-11-15 12:00+0000\n"
+"Last-Translator: PowerTaal Team <info@powertaal.nl>\n"
+"Language-Team: Dutch <nl@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html
+msgid "Over ons"
+msgstr "Over ons"
+
+#: templates/base.html
+msgid "Registreren"
+msgstr "Registreren"
+
+#: templates/base.html
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base.html
+msgid "VINGERSVLUG WOORDEN LEREN & SCHRIJVEN"
+msgstr "VINGERSVLUG WOORDEN LEREN & SCHRIJVEN"
+
+#: templates/base.html
+msgid "Dé plek om in uw eigen tempo en met uw eigen input een nieuwe taal te leren. Voor elke taal vormen woorden de basis. Leer die woorden hier door ze te lezen, te typen, op te schrijven of en te beluisteren. Door herhaling en diversiteit tijdens de training zal het u makkelijker afgaan dan bij vele andere methodes. U bepaalt zelf het tempo"
+msgstr "Dé plek om in uw eigen tempo en met uw eigen input een nieuwe taal te leren. Voor elke taal vormen woorden de basis. Leer die woorden hier door ze te lezen, te typen, op te schrijven of en te beluisteren. Door herhaling en diversiteit tijdens de training zal het u makkelijker afgaan dan bij vele andere methodes. U bepaalt zelf het tempo"
+
+#: templates/base.html
+msgid "Uit onderzoek blijkt dat oefening kunst baart."
+msgstr "Uit onderzoek blijkt dat oefening kunst baart."
+
+#: templates/base.html
+msgid "Zowel volwassenen als kinderen leren een taal simpelweg het best door woorden en zinnen te blijven oefenen en te herhalen. In korte tijd leert u de belangrijkste woorden en uitdrukkingen waardoor u makkelijker aan gesprekken zult kunnen deelnemen."
+msgstr "Zowel volwassenen als kinderen leren een taal simpelweg het best door woorden en zinnen te blijven oefenen en te herhalen. In korte tijd leert u de belangrijkste woorden en uitdrukkingen waardoor u makkelijker aan gesprekken zult kunnen deelnemen."
+
+#: templates/base.html
+msgid "Contactgegevens"
+msgstr "Contactgegevens"
+
+#: templates/base.html
+msgid "Adres"
+msgstr "Adres"
+
+#: templates/base.html
+msgid "Telefoon"
+msgstr "Telefoon"
+
+#: templates/base.html
+msgid "E-mail"
+msgstr "E-mail"
+
+#: templates/base.html
+msgid "Openingstijden"
+msgstr "Openingstijden"
+
+#: templates/base.html
+msgid "Maandag - Vrijdag: 9:00 - 17:00"
+msgstr "Maandag - Vrijdag: 9:00 - 17:00"
+
+#: templates/base.html
+msgid "Zaterdag - Zondag: Gesloten"
+msgstr "Zaterdag - Zondag: Gesloten"
+
+#: templates/base.html
+msgid "Volg ons"
+msgstr "Volg ons"
+
+#: templates/base.html
+msgid "Alle rechten voorbehouden."
+msgstr "Alle rechten voorbehouden."
+
+#: templates/base.html
+msgid "Privacybeleid"
+msgstr "Privacybeleid"
+
+#: templates/base.html
+msgid "Algemene Voorwaarden"
+msgstr "Algemene Voorwaarden"
+
+#: templates/base.html
+msgid "Contact Ons"
+msgstr "Contact Ons"
+
+#: templates/base.html
+msgid "Ma-Vr: 9:00 - 17:00"
+msgstr "Ma-Vr: 9:00 - 17:00"
+
+#: templates/base.html
+msgid "Za-Zo: Gesloten"
+msgstr "Za-Zo: Gesloten" 

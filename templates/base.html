@@ -1,0 +1,1267 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{% static 'img/powertaal-icon.png' %}" />
+    <title>{% block title %}PowerTaal{% endblock %}</title>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/form.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    
+    <!-- Google Fonts - EB Garamond (very similar to Bookerly) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    {% block extra_css %}{% endblock %}
+    
+    <style>
+        /* Apply Bookerly font (very similar to Bookerly) to all elements */
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, textarea, select, option, label, li {
+            font-family: 'Bookerly', serif !important;
+        }
+        
+        /* Top contact bar styling */
+        .top-contact-bar {
+            background-color: var(--dark-color);
+            padding: 8px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .top-contact-bar a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .top-contact-bar a:hover {
+            color: var(--orange-color);
+        }
+        
+        .top-contact-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .top-contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .top-contact-item i {
+            color: var(--orange-color);
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .top-social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .top-social-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .top-social-icon:hover {
+            transform: translateY(-3px);
+            background-color: var(--orange-color);
+        }
+        
+        .top-social-icon i {
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .top-contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .top-social-icons {
+                margin-top: 8px;
+                justify-content: flex-start;
+            }
+        }
+        
+        /* Adjust font sizes slightly for better readability */
+        p, li {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        input, textarea, select, option {
+            font-size: 15px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-size: 26px;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        h5 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        :root {
+            --primary-color: #1e88e5; /* Modern blue */
+            --dark-primary-color: #1565c0; /* Darker blue */
+            --dark-color: #212121; /* Very dark color for footer */
+            --orange-color: #ff5722; /* Vibrant orange */
+            --black-color: #333333;
+            --accent-color: #ffc107; /* Accent yellow */
+            --success-color: #4caf50; /* Success green */
+        }
+        
+        /* Horizontal color bars */
+        .top-bar-orange {
+            height: 0;
+            display: none;
+            background-color: var(--orange-color);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .top-bar-black {
+            height: 3px;
+            background-color: var(--black-color);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Logo styling */
+        .brand-logo {
+            height: 60px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        .tagline {
+            display: block;
+            font-size: 12px;
+            margin-top: -5px;
+            margin-left: 70px;
+            color: #666;
+            font-family: 'Bookerly', serif !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tagline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #FF6600, #00b0f0);
+            transition: width 0.3s ease;
+        }
+        
+        .logo-animation-wrapper:hover + .tagline::after {
+            width: 100%;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        /* Apply primary color to elements */
+        .nav-top {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 12px 0;
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        a {
+            color: var(--primary-color);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        /* Language buttons styling */
+        .language-buttons {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        .language-dropdown-btn .flag-icon {
+            width: 20px;
+            height: 15px;
+            display: inline-block;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+            border-radius: 2px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        /* RTL support for language dropdown button */
+        html[lang="ar"] .language-dropdown-btn .flag-icon {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        html[lang="ar"] .language-dropdown-btn .dropdown-arrow,
+        html[lang="ar"] .language-dropdown-btn .fa-chevron-down {
+            margin-right: 8px;
+            margin-left: 0;
+        }
+        
+        html[lang="ar"] .language-dropdown-btn {
+            flex-direction: row-reverse;
+        }
+        
+        .language-dropdown-btn .dropdown-arrow {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .language-dropdown-btn:hover {
+            background-color: var(--dark-primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .language-dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #fff;
+            min-width: 140px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            z-index: 1000;
+            display: none;
+            margin-top: 4px;
+        }
+        
+        .language-dropdown-content.show {
+            display: block;
+        }
+        
+        .language-dropdown-content a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            gap: 8px;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .language-dropdown-content a .flag-icon {
+            width: 20px;
+            height: 15px;
+        }
+        
+        .language-dropdown-content a:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .language-dropdown-content a.active {
+            background-color: #e9ecef;
+        }
+        
+        .language-dropdown-btn.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        @media (max-width: 768px) {
+            .language-dropdown-btn {
+                padding: 8px 16px;
+                font-size: 15px;
+            }
+            
+            .language-dropdown-btn .flag-icon {
+                width: 24px;
+                height: 18px;
+                margin-right: 8px;
+            }
+            
+            .language-dropdown-content {
+                right: 0;
+                left: auto;
+                min-width: 160px;
+            }
+            
+            .language-dropdown-content a {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+            
+            .language-dropdown-content .flag-icon {
+                width: 20px;
+                height: 15px;
+            }
+        }
+        
+        /* Contact button styling */
+        .contact-btn {
+            background-color: var(--orange-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-btn:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .contact-btn i {
+            margin-right: 8px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 30px;
+            position: relative;
+            border-bottom: 5px solid var(--orange-color);
+        }
+        
+        .footer-container {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-logo {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: var(--orange-color);
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-right: 10px;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+        }
+        
+        .footer-heading {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--orange-color);
+        }
+        
+        .footer-heading i {
+            color: var(--orange-color);
+        }
+        
+        .footer-text {
+            color: #e0e0e0;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        /* Contact items styling */
+        .contact-item {
+            display: flex;
+            margin-bottom: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact-item:hover .contact-icon {
+            transform: translateY(-3px) rotate(8deg);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            background-color: var(--orange-color);
+        }
+        
+        .contact-icon i {
+            color: white;
+            font-size: 18px;
+        }
+        
+        .contact-text {
+            flex-grow: 1;
+            padding-top: 2px;
+        }
+        
+        .contact-text h5 {
+            color: var(--orange-color);
+            font-size: 17px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-text p {
+            color: #e0e0e0;
+            margin-bottom: 0;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        /* Social Icons in Footer */
+        .footer-social {
+            margin-top: 30px;
+        }
+        
+        .footer-social .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+            z-index: 1;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-icon:hover::before {
+            left: 100%;
+        }
+        
+        .social-icon i {
+            font-size: 18px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-heading {
+                font-size: 18px;
+                margin-top: 25px;
+            }
+            
+            .contact-icon {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .contact-icon i {
+                font-size: 16px;
+            }
+            
+            .contact-text h5 {
+                font-size: 16px;
+            }
+            
+            .contact-text p {
+                font-size: 14px;
+            }
+            
+            .social-icon {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .social-icon i {
+                font-size: 16px;
+            }
+        }
+        
+        /* Copyright section */
+        .footer-copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+        
+        .footer-copyright a {
+            color: var(--orange-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-copyright a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Floating contact button */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            display: none;
+        }
+        
+        .floating-contact-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--orange-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .floating-contact-btn:hover {
+            transform: scale(1.1);
+            background-color: #e64a19;
+        }
+        
+        .floating-contact-btn i {
+            font-size: 24px;
+        }
+        
+        .floating-contact-popup {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 280px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: none;
+            transition: all 0.3s ease;
+            transform-origin: bottom right;
+        }
+        
+        .floating-contact-popup.show {
+            display: block;
+            animation: popupFadeIn 0.3s ease;
+        }
+        
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .floating-contact-popup h5 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 18px;
+            border-bottom: 2px solid var(--orange-color);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .floating-contact-popup .popup-contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .floating-contact-popup .popup-contact-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--orange-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .floating-contact-popup .popup-contact-text {
+            font-size: 15px;
+            color: var(--dark-color);
+        }
+        
+        .floating-contact-popup .popup-contact-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .floating-contact-popup .popup-contact-text a:hover {
+            color: var(--orange-color);
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        
+        .close-popup:hover {
+            color: var(--dark-color);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-contact {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-contact-btn {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .floating-contact-btn i {
+                font-size: 20px;
+            }
+            
+            .floating-contact-popup {
+                width: 250px;
+                padding: 15px;
+                bottom: 65px;
+            }
+        }
+        
+        /* Mobile navigation styling */
+        .mobile-nav {
+            position: relative;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            background: transparent;
+            padding: 8px;
+        }
+        
+        .navbar-toggler i {
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler:hover i {
+            transform: rotate(90deg);
+        }
+        
+        .nav-links-mobile {
+            display: flex !important;
+            flex-direction: column !important;
+            padding: 15px 0 !important;
+            gap: 10px !important;
+        }
+        
+        .nav-links-mobile .nav-link {
+            padding: 12px 18px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            text-align: left !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            border-radius: 0 !important;
+        }
+        
+        .nav-links-mobile .nav-link:last-child {
+            border-bottom: none !important;
+        }
+        
+        .nav-links-mobile .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+            transform: translateX(5px) !important;
+        }
+        
+        .nav-links-mobile .nav-link i {
+            font-size: 1.5rem !important;
+            margin-right: 15px !important;
+        }
+        
+        .nav-links-mobile .nav-link span {
+            font-size: 1rem !important;
+        }
+        
+        .nav-links-mobile a[href*="contact"] {
+            background: linear-gradient(135deg, var(--orange-color) 0%, #ff7043 100%) !important;
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3) !important;
+        }
+        
+        /* Navigatie styling - horizontale layout met iconen naast tekst */
+        .nav-top {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 12px 0;
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .nav-link, .contact-btn {
+            padding: 10px 16px !important;
+            margin: 0 8px !important;
+            border-radius: 8px !important;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: inline-flex !important;
+            align-items: center !important;
+        }
+        
+        .nav-link:before, .contact-btn:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 8px;
+        }
+        
+        .nav-link:hover:before, .contact-btn:hover:before {
+            height: 100%;
+        }
+        
+        .nav-link i, .contact-btn i {
+            font-size: 1.5rem !important;
+            margin-right: 10px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .nav-link:hover i, .contact-btn:hover i {
+            transform: translateY(-2px) !important;
+            color: #ffffff !important;
+        }
+        
+        .nav-link span, .contact-btn span {
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Contact button styling */
+        .contact-btn, .nav-links-mobile a[href*="contact"] {
+            background: linear-gradient(135deg, var(--orange-color) 0%, #ff7043 100%) !important;
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3) !important;
+            color: white !important;
+            border: none !important;
+        }
+        
+        .contact-btn:hover, .nav-links-mobile a[href*="contact"]:hover {
+            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.4) !important;
+            transform: translateY(-2px) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="top-contact-info">
+                        <!-- Contactgegevens verwijderd -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="top-social-icons">
+                        <a href="#" class="top-social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="top-social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="top-social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="top-social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logo and Tagline -->
+    <div class="container mt-3 mb-2">
+        <div class="row">
+            <div class="col-12">
+                <a href="{% url 'main:home' %}" class="text-decoration-none">
+                    <!-- PowerTaal Logo Image -->
+                    <img src="{% static 'img/brand-logo.png' %}" alt="PowerTaal Logo" class="brand-logo">
+                </a>
+                <span class="tagline text-muted">{% trans "VINGERSVLUG WOORDEN LEREN & SCHRIJVEN" %}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="nav-top">
+        <div class="container">
+            <!-- Desktop Navigation -->
+            <div class="d-none d-md-flex justify-content-between align-items-center py-2">
+                <div class="nav-links">
+                    <a class="nav-link" href="{% url 'main:home' %}">
+                        <i class="fas fa-home"></i>
+                        <span>{% if LANGUAGE_CODE == 'ar' %}الرئيسية{% else %}{% trans "Home" %}{% endif %}</span>
+                    </a>
+                    <a class="nav-link" href="{% url 'main:about' %}">
+                        <i class="fas fa-info-circle"></i>
+                        <span>{% if LANGUAGE_CODE == 'ar' %}من نحن{% else %}{% trans "Over ons" %}{% endif %}</span>
+                    </a>
+                    <a class="nav-link" href="{% url 'users:register' %}">
+                        <i class="fas fa-user-plus"></i>
+                        <span>{% if LANGUAGE_CODE == 'ar' %}تسجيل{% else %}{% trans "Registreren" %}{% endif %}</span>
+                    </a>
+                    <a class="contact-btn" href="{% url 'main:contact' %}">
+                        <i class="fas fa-envelope"></i>
+                        <span>{% if LANGUAGE_CODE == 'ar' %}اتصل بنا{% else %}{% trans "Contact" %}{% endif %}</span>
+                    </a>
+                </div>
+                <div class="language-buttons">
+                    <div class="language-dropdown-btn">
+                        {% if LANGUAGE_CODE == 'nl' %}
+                            <img src="https://flagcdn.com/w40/nl.png" alt="Dutch Flag" class="flag-icon"> Nederlands <i class="fas fa-chevron-down ms-2"></i>
+                        {% elif LANGUAGE_CODE == 'en' %}
+                            <img src="https://flagcdn.com/w40/gb.png" alt="UK Flag" class="flag-icon"> English <i class="fas fa-chevron-down ms-2"></i>
+                        {% elif LANGUAGE_CODE == 'de' %}
+                            <img src="https://flagcdn.com/w40/de.png" alt="German Flag" class="flag-icon"> Deutsch <i class="fas fa-chevron-down ms-2"></i>
+                        {% elif LANGUAGE_CODE == 'ar' %}
+                            <img src="https://flagcdn.com/w40/sa.png" alt="Arabic Flag" class="flag-icon"><span dir="rtl">العربية</span><i class="fas fa-chevron-down me-2"></i>
+                        {% else %}
+                            <!-- Default to Dutch if language code is not recognized -->
+                            <img src="https://flagcdn.com/w40/nl.png" alt="Dutch Flag" class="flag-icon"> Nederlands <i class="fas fa-chevron-down ms-2"></i>
+                        {% endif %}
+                        <!-- Debug: Current language is {{ LANGUAGE_CODE }} -->
+                    </div>
+                    <div class="language-dropdown-content">
+                        <a href="{% url 'main:force_dutch' %}" class="{% if LANGUAGE_CODE == 'nl' %}active{% endif %}">
+                            <img src="https://flagcdn.com/w40/nl.png" alt="Dutch Flag" class="flag-icon"> Nederlands
+                        </a>
+                        <a href="{% url 'main:set_language' 'en' %}" class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="UK Flag" class="flag-icon"> English
+                        </a>
+                        <a href="{% url 'main:set_language' 'de' %}" class="{% if LANGUAGE_CODE == 'de' %}active{% endif %}">
+                            <img src="https://flagcdn.com/w40/de.png" alt="German Flag" class="flag-icon"> Deutsch
+                        </a>
+                        <a href="{% url 'main:set_language' 'ar' %}" class="{% if LANGUAGE_CODE == 'ar' %}active{% endif %}">
+                            <img src="https://flagcdn.com/w40/sa.png" alt="Arabic Flag" class="flag-icon"><span dir="rtl">العربية</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="d-md-none mobile-nav">
+                <div class="d-flex justify-content-between align-items-center py-2">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavMenu" aria-controls="mobileNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars text-white"></i>
+                    </button>
+                    <div class="language-buttons">
+                        <div class="language-dropdown-btn">
+                            {% if LANGUAGE_CODE == 'nl' %}
+                                <img src="https://flagcdn.com/w40/nl.png" alt="Dutch Flag" class="flag-icon"> Nederlands <i class="fas fa-chevron-down ms-2"></i>
+                            {% elif LANGUAGE_CODE == 'en' %}
+                                <img src="https://flagcdn.com/w40/gb.png" alt="UK Flag" class="flag-icon"> English <i class="fas fa-chevron-down ms-2"></i>
+                            {% elif LANGUAGE_CODE == 'de' %}
+                                <img src="https://flagcdn.com/w40/de.png" alt="German Flag" class="flag-icon"> Deutsch <i class="fas fa-chevron-down ms-2"></i>
+                            {% elif LANGUAGE_CODE == 'ar' %}
+                                <img src="https://flagcdn.com/w40/sa.png" alt="Arabic Flag" class="flag-icon"><span dir="rtl">العربية</span><i class="fas fa-chevron-down me-2"></i>
+                            {% else %}
+                                <!-- Default to Dutch if language code is not recognized -->
+                                <img src="https://flagcdn.com/w40/nl.png" alt="Dutch Flag" class="flag-icon"> Nederlands <i class="fas fa-chevron-down ms-2"></i>
+                            {% endif %}
+                            <!-- Debug: Current language is {{ LANGUAGE_CODE }} -->
+                        </div>
+                        <div class="language-dropdown-content">
+                            <a href="{% url 'main:force_dutch' %}" class="{% if LANGUAGE_CODE == 'nl' %}active{% endif %}">
+                                <img src="https://flagcdn.com/w40/nl.png" alt="Dutch Flag" class="flag-icon"> Nederlands
+                            </a>
+                            <a href="{% url 'main:set_language' 'en' %}" class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+                                <img src="https://flagcdn.com/w40/gb.png" alt="UK Flag" class="flag-icon"> English
+                            </a>
+                            <a href="{% url 'main:set_language' 'de' %}" class="{% if LANGUAGE_CODE == 'de' %}active{% endif %}">
+                                <img src="https://flagcdn.com/w40/de.png" alt="German Flag" class="flag-icon"> Deutsch
+                            </a>
+                            <a href="{% url 'main:set_language' 'ar' %}" class="{% if LANGUAGE_CODE == 'ar' %}active{% endif %}">
+                                <img src="https://flagcdn.com/w40/sa.png" alt="Arabic Flag" class="flag-icon"><span dir="rtl">العربية</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="mobileNavMenu">
+                    <div class="nav-links-mobile">
+                        <a class="nav-link" href="{% url 'main:home' %}">
+                            <i class="fas fa-home"></i>
+                            <span>{% if LANGUAGE_CODE == 'ar' %}الرئيسية{% else %}{% trans "Home" %}{% endif %}</span>
+                        </a>
+                        <a class="nav-link" href="{% url 'main:about' %}">
+                            <i class="fas fa-info-circle"></i>
+                            <span>{% if LANGUAGE_CODE == 'ar' %}من نحن{% else %}{% trans "Over ons" %}{% endif %}</span>
+                        </a>
+                        <a class="nav-link" href="{% url 'users:register' %}">
+                            <i class="fas fa-user-plus"></i>
+                            <span>{% if LANGUAGE_CODE == 'ar' %}تسجيل{% else %}{% trans "Registreren" %}{% endif %}</span>
+                        </a>
+                        <a class="nav-link" href="{% url 'main:contact' %}">
+                            <i class="fas fa-envelope"></i>
+                            <span>{% if LANGUAGE_CODE == 'ar' %}اتصل بنا{% else %}{% trans "Contact" %}{% endif %}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Color bars below navigation -->
+    <div class="color-bars-nav">
+        <div class="top-bar-orange"></div>
+        <div class="top-bar-black"></div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" title="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer with color bars at top and bottom -->
+    <div class="footer-container">
+        <div class="top-bar-orange"></div>
+        <div class="top-bar-black"></div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <!-- PowerTaal Logo in Footer -->
+                        <div class="footer-logo">
+                            <img src="{% static 'img/brand-logo.png' %}" alt="PowerTaal Logo">
+                            <span class="tagline" style="display: block; color: white; margin-left: 0;">{% trans "VINGERSVLUG WOORDEN LEREN & SCHRIJVEN" %}</span>
+                        </div>
+                        <p class="footer-text">{% trans "Dé plek om in uw eigen tempo en met uw eigen input een nieuwe taal te leren. Voor elke taal vormen woorden de basis. Leer die woorden hier door ze te lezen, te typen, op te schrijven of en te beluisteren. Door herhaling en diversiteit tijdens de training zal het u makkelijker afgaan dan bij vele andere methodes. U bepaalt zelf het tempo" %}</p>
+                        <p class="footer-text"><strong>{% trans "Uit onderzoek blijkt dat oefening kunst baart." %}</strong> {% trans "Zowel volwassenen als kinderen leren een taal simpelweg het best door woorden en zinnen te blijven oefenen en te herhalen. In korte tijd leert u de belangrijkste woorden en uitdrukkingen waardoor u makkelijker aan gesprekken zult kunnen deelnemen." %}</p>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <!-- Contact Information -->
+                        <div class="footer-contact-info">
+                            <h4 class="footer-heading"><i class="fas fa-address-card me-2"></i>{% trans "Contactgegevens" %}</h4>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>{% trans "Adres" %}</h5>
+                                    <p>Taalstraat 123, 1234 AB Amsterdam</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>{% trans "Telefoon" %}</h5>
+                                    <p>+31 20 123 4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>{% trans "E-mail" %}</h5>
+                                    <p>info@powertaal.nl</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>{% trans "Openingstijden" %}</h5>
+                                    <p>{% trans "Maandag - Vrijdag: 9:00 - 17:00" %}</p>
+                                    <p class="mb-0">{% trans "Zaterdag - Zondag: Gesloten" %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Links -->
+                        <div class="footer-social">
+                            <h4 class="footer-heading"><i class="fas fa-share-alt me-2"></i>{% trans "Volg ons" %}</h4>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon" style="background-color: #3b5998;" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                                <a href="#" class="social-icon" style="background-color: #1da1f2;" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                                <a href="#" class="social-icon" style="background-color: #0077b5;" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Copyright Section -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-copyright">
+                            <p>&copy; {% now "Y" %} PowerTaal. {% trans "Alle rechten voorbehouden." %} | <a href="#">{% trans "Privacybeleid" %}</a> | <a href="#">{% trans "Algemene Voorwaarden" %}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/slider-animation.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/logo-animation.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+    
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <div class="floating-contact-btn">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="floating-contact-popup">
+            <div class="close-popup">
+                <i class="fas fa-times"></i>
+            </div>
+            <h5>{% trans "Contact Ons" %}</h5>
+            <div class="popup-contact-item">
+                <div class="popup-contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="popup-contact-text">
+                    <a href="tel:+31201234567">+31 20 123 4567</a>
+                </div>
+            </div>
+            <div class="popup-contact-item">
+                <div class="popup-contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="popup-contact-text">
+                    <a href="mailto:info@powertaal.nl">info@powertaal.nl</a>
+                </div>
+            </div>
+            <div class="popup-contact-item">
+                <div class="popup-contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="popup-contact-text">
+                    Taalstraat 123, 1234 AB Amsterdam
+                </div>
+            </div>
+            <div class="popup-contact-item">
+                <div class="popup-contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="popup-contact-text">
+                    {% trans "Ma-Vr: 9:00 - 17:00" %}<br>
+                    {% trans "Za-Zo: Gesloten" %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language dropdown functionality
+            const dropdownBtns = document.querySelectorAll('.language-dropdown-btn');
+            const dropdownContents = document.querySelectorAll('.language-dropdown-content');
+
+            dropdownBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const content = this.nextElementSibling;
+                    dropdownContents.forEach(dc => {
+                        if (dc !== content) {
+                            dc.classList.remove('show');
+                        }
+                    });
+                    content.classList.toggle('show');
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.language-buttons')) {
+                    dropdownContents.forEach(content => {
+                        content.classList.remove('show');
+                    });
+                }
+            });
+
+            // Prevent closing when clicking inside dropdown
+            dropdownContents.forEach(content => {
+                content.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

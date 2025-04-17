@@ -1,0 +1,360 @@
+{% load static %}
+{% load i18n %}
+
+<div class="form-container">
+    <div class="language-switcher">
+        <button class="language-btn" onclick="updateLanguage('nl')">
+            <img src="{% static 'img/flags/nl.svg' %}" alt="Dutch Flag" class="flag-icon">
+            <span>الهولندية</span>
+        </button>
+        <button class="language-btn" onclick="updateLanguage('en')">
+            <img src="{% static 'img/flags/gb.svg' %}" alt="English Flag" class="flag-icon">
+            <span>الإنجليزية</span>
+        </button>
+        <button class="language-btn" onclick="updateLanguage('de')">
+            <img src="{% static 'img/flags/de.svg' %}" alt="German Flag" class="flag-icon">
+            <span>الألمانية</span>
+        </button>
+        <button class="language-btn active" onclick="updateLanguage('ar')">
+            <img src="{% static 'img/flags/ar.svg' %}" alt="Arabic Flag" class="flag-icon">
+            <span>العربية</span>
+        </button>
+    </div>
+
+    <div class="form-title">
+        {% if form_title %}
+            <h2>{{ form_title }}</h2>
+        {% else %}
+            <h2>نموذج</h2>
+        {% endif %}
+    </div>
+
+    <form method="post" class="auth-form" novalidate>
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                    {% if field.field.required %}
+                        <span class="required">*</span>
+                    {% endif %}
+                </label>
+                
+                {{ field }}
+                
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                
+                {% if field.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                {% if submit_text %}
+                    {{ submit_text }}
+                {% else %}
+                    إرسال
+                {% endif %}
+            </button>
+            
+            {% if cancel_url %}
+                <a href="{{ cancel_url }}" class="btn btn-secondary">إلغاء</a>
+            {% endif %}
+        </div>
+        
+        {% if extra_links %}
+            <div class="form-links">
+                {% for link in extra_links %}
+                    <a href="{{ link.url }}" class="form-link">{{ link.text }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% if show_register_link %}
+            <div class="form-links">
+                <p>ليس لديك حساب؟ <a href="{% url 'users:register' %}" class="form-link">سجل الآن</a></p>
+            </div>
+        {% endif %}
+        
+        {% if show_login_link %}
+            <div class="form-links">
+                <p>لديك حساب بالفعل؟ <a href="{% url 'users:login' %}" class="form-link">تسجيل الدخول</a></p>
+            </div>
+        {% endif %}
+        
+        {% if show_password_reset %}
+            <div class="form-links">
+                <a href="{% url 'users:password_reset' %}" class="form-link">نسيت كلمة المرور؟</a>
+            </div>
+        {% endif %}
+    </form>
+</div>
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .language-switcher {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .language-btn {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+    
+    .language-btn:hover {
+        background-color: #e9ecef;
+    }
+    
+    .language-btn.active {
+        background-color: #00b0f0;
+        color: white;
+        border-color: #00b0f0;
+    }
+    
+    .flag-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+        border-radius: 3px;
+    }
+    
+    .form-title {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .form-title h2 {
+        color: #333;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #00b0f0;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 176, 240, 0.2);
+    }
+    
+    .required {
+        color: #dc3545;
+        margin-right: 4px;
+    }
+    
+    .form-text {
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+    
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+    .alert {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    
+    .alert-danger {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+    }
+    
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .btn-primary {
+        background-color: #00b0f0;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0090c5;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-links {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .form-link {
+        color: #00b0f0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .form-link:hover {
+        color: #0090c5;
+        text-decoration: underline;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .form-container {
+            padding: 20px;
+        }
+        
+        .form-title h2 {
+            font-size: 22px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+    }
+</style>
+
+<script>
+    function updateLanguage(language) {
+        // Get the current URL
+        let currentUrl = window.location.href;
+        
+        // Create new URLs for each language
+        let newUrl;
+        
+        if (language === 'nl') {
+            newUrl = currentUrl.replace('/ar/', '/nl/');
+        } else if (language === 'en') {
+            newUrl = currentUrl.replace('/ar/', '/en/');
+        } else if (language === 'de') {
+            newUrl = currentUrl.replace('/ar/', '/de/');
+        } else if (language === 'ar') {
+            newUrl = currentUrl;
+        }
+        
+        // Redirect to the new URL
+        window.location.href = newUrl;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add validation classes on form submission
+        const form = document.querySelector('.auth-form');
+        
+        if (form) {
+            const inputs = form.querySelectorAll('input, select, textarea');
+            
+            form.addEventListener('submit', function(e) {
+                inputs.forEach(input => {
+                    if (input.hasAttribute('required') && !input.value.trim()) {
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+            });
+            
+            // Remove validation classes on input
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.classList.remove('is-invalid');
+                });
+            });
+        }
+    });
+</script> 

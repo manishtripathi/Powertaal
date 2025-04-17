@@ -1,0 +1,54 @@
+/* Custom CSS om alle zwarte/donkere strepen te vervangen door oranje strepen */
+
+/* Algemene stijlen voor strepen */
+.welcome-section {
+    border-top: 3px solid var(--secondary-color) !important; /* Oranje streep bovenaan */
+}
+
+/* Overschrijf inline styles in templates */
+section.welcome-section {
+    border-top: 3px solid #ff6600 !important; /* Oranje streep bovenaan */
+    border-bottom: none !important;
+}
+
+/* Stijlen voor gradiënten en accenten */
+.welcome-title::after {
+    background: linear-gradient(90deg, #ff6600, #00b0f0) !important; /* Oranje naar blauw gradiënt */
+}
+
+/* Highlight text onderstreping */
+.highlight-text::after {
+    background-color: #ff6600 !important; /* Oranje onderstreping */
+}
+
+/* Navigatie hover effect */
+.nav-top .nav-link:hover {
+    border-bottom: 3px solid #ff6600 !important; /* Oranje onderstreping bij hover */
+}
+
+/* Knoppen en UI elementen */
+.btn-primary, .btn-action {
+    background-color: #00b0f0 !important; /* Blauwe knoppen */
+    border-color: #00b0f0 !important;
+}
+
+.btn-secondary, .btn-accent {
+    background-color: #ff6600 !important; /* Oranje knoppen */
+    border-color: #ff6600 !important;
+}
+
+/* Overige elementen met strepen/randen */
+hr, .divider {
+    background-color: #ff6600 !important; /* Oranje horizontale lijnen */
+    border-color: #ff6600 !important;
+}
+
+/* Borders en outlines */
+.border-dark, .border-black {
+    border-color: #ff6600 !important; /* Vervang donkere randen door oranje */
+}
+
+/* Specifieke elementen in de welcome section */
+.welcome-section .container {
+    background-color: #f0f7ff !important; /* Lichtblauwe achtergrond die past bij het blauwe logo */
+} 

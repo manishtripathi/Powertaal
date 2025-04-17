@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Overtypen - PowerTaal{% endblock %}
+
+{% block content %}
+<!-- Typing Hero Section -->
+<section class="typing-hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="typing-title">Overtypen</h1>
+                <p class="lead">U typt nu {{ target_lang }} vanuit {{ source_lang }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Typing Content Section -->
+<section class="typing-content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="typing-card">
+                    <h2>Woorden overtypen</h2>
+                    <p>Hier kunt u woorden overtypen in de door u gekozen taalcombinatie.</p>
+                    
+                    <div class="typing-exercise mt-4">
+                        <div class="source-text">
+                            <h3>{{ source_lang }} tekst:</h3>
+                            <div class="text-content">
+                                <p>Dit is een voorbeeldtekst in {{ source_lang }}. Typ de vertaling hieronder.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="typing-area mt-4">
+                            <h3>Typ de {{ target_lang }} vertaling:</h3>
+                            <textarea class="form-control" rows="5" placeholder="Begin hier met typen..."></textarea>
+                        </div>
+                        
+                        <div class="typing-controls mt-3 text-center">
+                            <button class="btn btn-primary">Controleren</button>
+                            <button class="btn btn-secondary">Volgende</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder for more functionality -->
+                    <div class="placeholder-text text-center mt-4">
+                        <p>Deze pagina is nog in ontwikkeling. Binnenkort kunt u hier woorden overtypen.</p>
+                    </div>
+                    
+                    <div class="actions text-center mt-4">
+                        <a href="{% url 'main:select-language' %}" class="btn btn-secondary">Terug naar taalselectie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .typing-card {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+    
+    .text-content {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .typing-area textarea {
+        border: 2px solid #4169e1;
+        border-radius: 8px;
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    .typing-controls button {
+        margin: 0 5px;
+        padding: 8px 20px;
+    }
+    
+    .placeholder-text {
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+    }
+</style>
+{% endblock %} 

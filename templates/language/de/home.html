@@ -1,0 +1,438 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}PowerTaal - Spielerisch Wörter lernen & schreiben{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Slideshow -->
+<section class="hero-section">
+    <div class="container">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="{% static 'img/slide-1.jpg' %}" alt="Slide 1">
+                <div class="slide-text-container">
+                    <h1 class="hero-title">Spielerisch Wörter lernen & schreiben</h1>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="{% static 'img/slide-2.jpg' %}" alt="Slide 2">
+                <div class="slide-text-container">
+                    <h1 class="hero-title">Spielerisch Wörter lernen & schreiben</h1>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="{% static 'img/slide-3.jpg' %}" alt="Slide 3">
+                <div class="slide-text-container">
+                    <h1 class="hero-title">Spielerisch Wörter lernen & schreiben</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Options Section -->
+<section class="options-section">
+    <div class="container">
+        <h2 class="option-title">Schritt 1: <span style="color: #FF6600;">Bei Powertaal</span> <span style="color: #00b0f0;">gibt es zwei Optionen:</span></h2>
+        <div class="row tight-row">
+            <div class="col-md-6 mb-4">
+                <div class="option-card standard">
+                    <div class="card-ribbon">STANDARD</div>
+                    <h3><span class="highlight">VÖLLIG KOSTENLOS UND OHNE REGISTRIERUNG.</span></h3>
+                    <p>Wenn Sie schnell und spielerisch eine neue Sprache lernen möchten. Dies kann in Ihrem eigenen Tempo mit verschiedenen effektiven Übungen erfolgen. So können Sie mit einer großen Anzahl von Wörtern in verschiedenen Sprachen üben, wobei Sie schnell eine Verbesserung Ihrer Sprachkenntnisse entwickeln werden. Am Ende jedes Spiels sehen Sie die Punktzahl auf der Anzeigetafel.</p>
+                    <p class="mb-3"><strong>Mehr lesen...</strong></p>
+                    <div class="text-center">
+                        <a href="{% url 'main:select-language' %}" class="btn btn-start">Jetzt starten</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="option-card advanced">
+                    <div class="card-ribbon">FORTGESCHRITTEN</div>
+                    <h3><span class="highlight">IHR EIGENES KONTO FÜR NUR € 7,99.</span></h3>
+                    <p>In Ihrem eigenen Dashboard und Trainingsumgebung haben Sie unbegrenzten Zugang zu allem, was Powertaal zu bieten hat. Ein umfangreicheres Set von Wörtern und Sätzen mit mehr Trainingsoptionen. Sie können zum Beispiel mit Wörtern + den dazugehörigen Artikeln üben und ein Diktat machen. Jeden Monat gibt es neue Wörter und Sätze zum Üben.</p>
+                    <p class="mb-3"><strong>Mehr lesen...</strong></p>
+                    <div class="text-center">
+                        <a href="{% url 'users:login' %}" class="btn btn-start">Anmelden</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Welcome Section -->
+<section class="welcome-section" style="padding: 0; margin: 0; background: transparent; position: relative; border-top: 3px solid rgb(63, 84, 85); border-bottom: none;">
+    <div class="container" style="position: relative; z-index: 2; text-align: center; max-width: 900px; padding-top: 10px; padding-bottom: 10px; background-color: #e8f4f8;">
+        <h2 class="welcome-title" style="font-size: 32px; font-weight: bold; color: #FF6600; margin-top: 0; margin-bottom: 15px; text-align: center; position: relative; display: inline-block; letter-spacing: 1px;">WILLKOMMEN BEI POWERTAAL</h2>
+        <p class="welcome-text" style="font-size: 17px; line-height: 1.6; color: #333; margin: 0 auto; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);">Der Ort, um in Ihrem eigenen Tempo und mit Ihrem eigenen Input eine neue Sprache zu lernen. Für jede Sprache bilden Wörter die Grundlage. Lernen Sie diese Wörter hier, indem Sie sie lesen, tippen, aufschreiben oder anhören. Durch Wiederholung und Vielfalt während des Trainings wird es Ihnen leichter fallen als bei vielen anderen Methoden. <strong class="highlight-text" style="color: #FF6600; font-weight: bold; position: relative; display: inline-block;">Sie bestimmen das Tempo selbst</strong>.</p>
+    </div>
+</section>
+
+<style>
+    /* Slideshow styling */
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+        padding: 10px 0;
+        background-color: #f5f5f5;
+        margin-bottom: 10px;
+    }
+    
+    .slideshow-container {
+        width: 100%;
+        max-width: 1140px;
+        position: relative;
+        margin: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        height: 350px; /* Vaste hoogte voor de container */
+    }
+    
+    .slide {
+        width: 100%;
+        /* display: none; */ /* Verwijder deze regel zodat de slides zichtbaar blijven */
+        position: relative;
+        height: 100%;
+    }
+    
+    .slide img {
+        width: 100%;
+        height: 350px; /* Verhoog de hoogte van 150px naar 350px */
+        object-fit: cover;
+        filter: brightness(0.9);
+        transition: transform 0.5s ease;
+    }
+    
+    .slide:hover img {
+        transform: scale(1.03);
+    }
+    
+    .slide-text-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(to right, rgba(0, 102, 153, 0.6), rgba(255, 102, 0, 0.6));
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        padding: 0 15px;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    
+    @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+    }
+    
+    /* Styling für die Optionskarten */
+    .options-section {
+        padding: 20px 0 0;
+        background-color: white;
+    }
+    
+    .option-title {
+        margin-bottom: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #FF6600 0%, #00b0f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 5px;
+    }
+    
+    .option-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #FF6600 0%, #00b0f0 100%);
+    }
+    
+    .option-card {
+        height: 100%;
+        min-height: 350px;
+        border-radius: 20px;
+        padding: 20px 25px 15px;
+        color: white;
+        position: relative;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 3px solid white;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .option-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    }
+    
+    .option-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: #FF6600;
+    }
+    
+    .option-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+    }
+    
+    .option-card.standard {
+        background: linear-gradient(135deg, #00b0f0 0%, #0077be 100%);
+        box-shadow: 0 0 0 3px #00b0f0, 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .option-card.advanced {
+        background: linear-gradient(135deg, #006699 0%, #004466 100%);
+        box-shadow: 0 0 0 3px #006699, 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .option-card.standard::after {
+        background: #00b0f0;
+    }
+    
+    .option-card.advanced::after {
+        background: #FF6600;
+    }
+    
+    .card-ribbon {
+        position: absolute;
+        top: 15px;
+        right: -45px;
+        background: #FF6600;
+        color: white;
+        font-weight: bold;
+        padding: 5px 45px;
+        transform: rotate(45deg);
+        font-size: 14px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+    }
+    
+    .option-card.advanced .card-ribbon {
+        background: #00b0f0;
+    }
+    
+    .option-card h3 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        margin-top: 12px;
+        text-align: center;
+    }
+    
+    .option-card .highlight {
+        font-weight: normal;
+    }
+    
+    .option-card .text-center {
+        margin-top: auto;
+        padding-top: 5px;
+    }
+    
+    .option-card p {
+        font-size: 16px;
+        margin-bottom: 8px;
+        line-height: 1.4;
+        flex-grow: 1;
+    }
+    
+    .btn-start {
+        background: #3d5a73;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 35px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 280px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        border: none;
+        text-transform: none;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .btn-start i {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+    
+    .btn-start:hover {
+        background: #4d7a93;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+    
+    .option-card.advanced .btn-start {
+        background: #5a3d60;
+    }
+    
+    .option-card.advanced .btn-start:hover {
+        background: #7a5d80;
+    }
+    
+    .btn-start::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.7s;
+        z-index: -1;
+    }
+    
+    .btn-start:hover::before {
+        left: 100%;
+    }
+    
+    /* Welcome section styling */
+    .welcome-section {
+        padding: 25px 0;
+        background: linear-gradient(to right, #f0f7fc, #e6f2fa);
+        position: relative;
+        margin-top: -15px;
+        border-top: 4px solid #006699;
+        border-bottom: 4px solid #FF6600;
+    }
+    
+    .welcome-section .container {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 900px;
+    }
+    
+    .welcome-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #006699;
+        margin-bottom: 15px;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+        letter-spacing: 1px;
+    }
+    
+    .welcome-title::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, #FF6600, #00b0f0);
+        margin: 10px auto 0;
+        border-radius: 3px;
+    }
+    
+    .welcome-text {
+        font-size: 17px;
+        line-height: 1.6;
+        color: #333;
+        margin: 0 auto;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+    }
+    
+    .highlight-text {
+        color: #FF6600;
+        font-weight: bold;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .highlight-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #FF6600;
+    }
+
+    .col-md-6.mb-4 {
+        margin-bottom: 0 !important;
+    }
+
+    .tight-row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .tight-row > [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let slideIndex = 0;
+        
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            
+            // Alle Slides ausblenden
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            // Nächste Slide anzeigen
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            
+            // Alle 5 Sekunden zur nächsten Slide wechseln
+            setTimeout(showSlides, 5000);
+        }
+        
+        // Slideshow starten
+        showSlides();
+    });
+</script>
+{% endblock %} 

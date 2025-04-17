@@ -1,0 +1,576 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Selecteer Taal - PowerTaal{% endblock %}
+
+{% block content %}
+<!-- Top blue section with Overtypen title and text -->
+<section class="top-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h1 class="overtypen-title">Overtypen...</h1>
+            </div>
+            <div class="col-md-8">
+                <div class="standard-text">
+                    <p><strong>Standaard:</strong> helemaal gratis en zonder registratie.</p>
+                    <p>Als u snel en spelenderwijs een nieuwe taal wilt leren. Dit kan in uw eigen tempo met een verschillende effectieve oefeningen. Zo kunt u oefenen met een groot aantal woorden in verschillende talen, waarbij u snel een verbetering in uw taalvaardigheid zult ontwikkelen. Aan het einde van elk spel ziet u de score op het scorebord.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Language Selection Card Section -->
+<section class="language-selection-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="language-selection-card">
+                    <h2 class="step-title">Stap 2:</h2>
+                    <h2 class="combo-title">Welke taalcombinatie kiest u?</h2>
+                    <p class="subtitle">klik op één van de onderstaande knoppen</p>
+                    
+                    <form method="POST" id="language-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="selected_combination" id="selected-combination" value="">
+                        <input type="hidden" name="selected_action" id="selected-action" value="">
+                        
+                        <div class="language-buttons">
+                            <div class="row justify-content-center language-row">
+                                <div class="col-auto mb-3">
+                                    <button type="button" class="btn language-combo nl-nl" data-combo="nl-nl">
+                                        <div class="top-text">Nederlands</div>
+                                        <div class="middle-text">NL/NL</div>
+                                        <div class="bottom-text">Nederlands</div>
+                                    </button>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <button type="button" class="btn language-combo nl-en" data-combo="nl-en">
+                                        <div class="top-text">Nederlands</div>
+                                        <div class="middle-text">NL/EN</div>
+                                        <div class="bottom-text">Engels</div>
+                                    </button>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <button type="button" class="btn language-combo en-nl" data-combo="en-nl">
+                                        <div class="top-text">Engels</div>
+                                        <div class="middle-text">EN/NL</div>
+                                        <div class="bottom-text">Nederlands</div>
+                                    </button>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <button type="button" class="btn language-combo en-en" data-combo="en-en">
+                                        <div class="top-text">Engels</div>
+                                        <div class="middle-text">EN/EN</div>
+                                        <div class="bottom-text">Engels</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <div class="row justify-content-center action-row">
+                                <div class="col-md-5 mb-3 text-center">
+                                    <button type="button" class="btn action-btn learn-btn" data-action="learn" disabled>
+                                        Leren
+                                    </button>
+                                </div>
+                                <div class="col-md-5 mb-3 text-center">
+                                    <button type="button" class="btn action-btn type-btn" data-action="type" disabled>
+                                        Overtypen
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Orange and Black borders -->
+<div class="black-border"></div>
+
+<style>
+    /* Remove all margins and paddings from body and html */
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    
+    /* Top section with Overtypen title and text */
+    .top-section {
+        background-color: #00b0f0;
+        padding: 30px 0;
+        color: white;
+        margin: 0;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 102, 153, 0.5);
+    }
+    
+    /* Overtypen title */
+    .overtypen-title {
+        font-size: 72px;
+        color: #006699;
+        margin-left: 20px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Standard text */
+    .standard-text {
+        padding-right: 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    .standard-text p {
+        margin-bottom: 15px;
+    }
+    
+    /* Language selection section */
+    .language-selection-section {
+        padding: 30px 0;
+        background-color: white;
+        margin: 0;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Language selection card */
+    .language-selection-card {
+        background-color: #00b0f0;
+        border-radius: 20px;
+        padding: 20px;
+        color: white;
+        margin: 0 auto;
+        max-width: 700px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 102, 153, 0.5);
+    }
+    
+    /* Step title */
+    .step-title {
+        font-size: 22px;
+        margin-bottom: 5px;
+        text-align: left;
+        margin-left: 20px;
+    }
+    
+    /* Combo title */
+    .combo-title {
+        font-size: 28px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    
+    /* Subtitle */
+    .subtitle {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #006699;
+    }
+    
+    /* Language buttons */
+    .language-buttons {
+        margin-bottom: 30px;
+    }
+    
+    /* Better centering for buttons */
+    .language-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+    
+    .language-row > div {
+        padding: 0;
+        flex: 0 0 auto;
+    }
+    
+    /* Language combo buttons */
+    .language-combo {
+        position: relative;
+        width: 140px;
+        margin: 0;
+        text-align: center;
+        border-radius: 15px;
+        padding: 8px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        border-top: 3px solid #C0392B;  /* Rode kleur bovenaan */
+        border-bottom: 3px solid #2C3E50;  /* Donkere kleur onderaan */
+    }
+    
+    /* NL/NL button - donkerblauw */
+    .nl-nl {
+        background-color: #1E3799;
+        border: none;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* NL/EN button - middenblauw */
+    .nl-en {
+        background-color: #3498DB;
+        border: none;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* EN/NL button - oranje */
+    .en-nl {
+        background-color: #E67E22;
+        border: none;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* EN/NL button - top text border */
+    .en-nl .top-text {
+        border-top: 2px solid #C0392B !important; /* Rode lijn voor contrast */
+    }
+    
+    /* EN/EN button - groen */
+    .en-en {
+        background-color: #2ECC71;
+        border: none;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Top text in language buttons */
+    .top-text {
+        color: #A3E4FF;
+        font-size: 14px;
+        margin-bottom: 6px;
+        border-top: 2px solid #C0392B;  /* Rode lijn boven de tekst */
+        padding-top: 6px;
+    }
+    
+    /* Middle text in language buttons */
+    .middle-text {
+        color: white;
+        font-size: 22px;
+        margin: 3px 0;
+        font-weight: bold;
+    }
+    
+    /* Bottom text in language buttons */
+    .bottom-text {
+        color: #A3E4FF;
+        font-size: 14px;
+        margin-top: 6px;
+        border-bottom: 2px solid #2C3E50;  /* Donkere lijn onder de tekst */
+        padding-bottom: 6px;
+    }
+    
+    /* Action buttons */
+    .action-buttons {
+        padding: 0;
+        margin-top: 20px;
+    }
+    
+    .action-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+    
+    .action-row > div {
+        padding: 0;
+    }
+    
+    .action-btn {
+        background: #3d5a73;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 30px;
+        border-radius: 40px;
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 200px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        border: none;
+        height: auto;
+    }
+    
+    /* Learn button - blauw zoals Start nu */
+    .learn-btn {
+        background: #3d5a73;
+    }
+    
+    .learn-btn:hover {
+        background: #4d7a93;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Type button - paars zoals Inloggen */
+    .type-btn {
+        background: #5a3d60;
+    }
+    
+    .type-btn:hover {
+        background: #7a5d80;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Disabled buttons */
+    .action-btn:disabled {
+        opacity: 0.7;
+    }
+    
+    /* Shine effect voor knoppen */
+    .action-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.7s;
+        z-index: -1;
+    }
+    
+    .action-btn:hover::before {
+        left: 100%;
+    }
+    
+    /* Active language button */
+    .language-combo.active {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Footer section */
+    .footer-section {
+        background-color: #343a40;
+        color: white;
+        padding: 50px 0;
+        margin: 0;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Footer logo */
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .logo-circle {
+        width: 60px;
+        height: 60px;
+        background-color: #4169e1;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 15px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text h3 {
+        color: #4169e1;
+        margin-bottom: 0;
+        font-size: 24px;
+    }
+    
+    .logo-text p {
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+    
+    /* Footer text */
+    .footer-text {
+        margin-bottom: 20px;
+        max-width: 600px;
+    }
+    
+    /* Social icons */
+    .social-icons {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #4169e1;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-left: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    
+    .social-icon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.7s;
+        z-index: -1;
+    }
+    
+    .social-icon:hover {
+        background-color: #ff6600;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .social-icon:hover::before {
+        left: 100%;
+    }
+    
+    /* Footer info */
+    .footer-info {
+        text-align: right;
+    }
+    
+    /* Remove all margins and paddings from sections */
+    section {
+        margin: 0 !important;
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .overtypen-title {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .standard-text {
+            padding: 0 20px;
+        }
+        
+        .combo-title {
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+        }
+        
+        .language-row {
+            flex-wrap: wrap;
+        }
+        
+        .language-combo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .top-text, .bottom-text {
+            font-size: 14px;
+        }
+        
+        .middle-text {
+            font-size: 20px;
+        }
+        
+        .action-btn {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            justify-content: center;
+        }
+        
+        .footer-info {
+            text-align: center;
+        }
+    }
+    
+    /* Orange bottom border */
+    .orange-border {
+        height: 20px;
+        background-color: #C0392B;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    
+    /* Remove right padding/margin */
+    .row.justify-content-center {
+        margin-right: 0;
+        padding-right: 0;
+    }
+    
+    .container {
+        padding-right: 0;
+    }
+</style>
+
+<!-- Font Awesome for social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const languageCombos = document.querySelectorAll('.language-combo');
+        const actionButtons = document.querySelectorAll('.action-btn');
+        const selectedCombinationInput = document.getElementById('selected-combination');
+        const selectedActionInput = document.getElementById('selected-action');
+        const languageForm = document.getElementById('language-form');
+        
+        // Handle language combination selection
+        languageCombos.forEach(combo => {
+            combo.addEventListener('click', function() {
+                // Remove active class from all combos
+                languageCombos.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked combo
+                this.classList.add('active');
+                
+                // Store selected combination
+                selectedCombinationInput.value = this.getAttribute('data-combo');
+                
+                // Enable action buttons
+                actionButtons.forEach(btn => btn.disabled = false);
+            });
+        });
+        
+        // Handle action button clicks
+        actionButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Store selected action
+                selectedActionInput.value = this.getAttribute('data-action');
+                
+                // Submit the form
+                languageForm.submit();
+            });
+        });
+    });
+</script>
+{% endblock %} 

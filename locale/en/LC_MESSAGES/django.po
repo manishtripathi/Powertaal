@@ -1,0 +1,163 @@
+# English translation for PowerTaal
+# This file is distributed under the same license as the PowerTaal package.
+msgid ""
+msgstr ""
+"Project-Id-Version: PowerTaal 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-15 12:00+0000\n"
+"PO-Revision-Date: 2023-11-15 12:00+0000\n"
+"Last-Translator: PowerTaal Team <info@powertaal.nl>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html
+msgid "Over ons"
+msgstr "About us"
+
+#: templates/base.html
+msgid "Registreren"
+msgstr "Register"
+
+#: templates/base.html
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base.html
+msgid "VINGERSVLUG WOORDEN LEREN & SCHRIJVEN"
+msgstr "QUICKLY LEARN & WRITE WORDS"
+
+#: templates/base.html
+msgid "Dé plek om in uw eigen tempo en met uw eigen input een nieuwe taal te leren. Voor elke taal vormen woorden de basis. Leer die woorden hier door ze te lezen, te typen, op te schrijven of en te beluisteren. Door herhaling en diversiteit tijdens de training zal het u makkelijker afgaan dan bij vele andere methodes. U bepaalt zelf het tempo"
+msgstr "The place to learn a new language at your own pace and with your own input. Words form the basis for every language. Learn those words here by reading, typing, writing or listening to them. Through repetition and diversity during training, it will be easier for you than with many other methods. You determine the pace yourself"
+
+#: templates/base.html
+msgid "Uit onderzoek blijkt dat oefening kunst baart."
+msgstr "Research shows that practice makes perfect."
+
+#: templates/base.html
+msgid "Zowel volwassenen als kinderen leren een taal simpelweg het best door woorden en zinnen te blijven oefenen en te herhalen. In korte tijd leert u de belangrijkste woorden en uitdrukkingen waardoor u makkelijker aan gesprekken zult kunnen deelnemen."
+msgstr "Both adults and children simply learn a language best by continuing to practice and repeat words and sentences. In a short time, you will learn the most important words and expressions, making it easier for you to participate in conversations."
+
+#: templates/base.html
+msgid "Contactgegevens"
+msgstr "Contact details"
+
+#: templates/base.html
+msgid "Adres"
+msgstr "Address"
+
+#: templates/base.html
+msgid "Telefoon"
+msgstr "Phone"
+
+#: templates/base.html
+msgid "E-mail"
+msgstr "Email"
+
+#: templates/base.html
+msgid "Openingstijden"
+msgstr "Opening hours"
+
+#: templates/base.html
+msgid "Maandag - Vrijdag: 9:00 - 17:00"
+msgstr "Monday - Friday: 9:00 - 17:00"
+
+#: templates/base.html
+msgid "Zaterdag - Zondag: Gesloten"
+msgstr "Saturday - Sunday: Closed"
+
+#: templates/base.html
+msgid "Volg ons"
+msgstr "Follow us"
+
+#: templates/base.html
+msgid "Alle rechten voorbehouden."
+msgstr "All rights reserved."
+
+#: templates/base.html
+msgid "Privacybeleid"
+msgstr "Privacy Policy"
+
+#: templates/base.html
+msgid "Algemene Voorwaarden"
+msgstr "Terms and Conditions"
+
+#: templates/base.html
+msgid "Contact Ons"
+msgstr "Contact Us"
+
+#: templates/base.html
+msgid "Ma-Vr: 9:00 - 17:00"
+msgstr "Mon-Fri: 9:00 - 17:00"
+
+#: templates/base.html
+msgid "Za-Zo: Gesloten"
+msgstr "Sat-Sun: Closed"
+
+#: templates/main/home.html
+msgid "Spelenderwijs woorden leren & schrijven"
+msgstr "Playfully learn & write words"
+
+#: templates/main/home.html
+msgid "Stap 1:"
+msgstr "Step 1:"
+
+#: templates/main/home.html
+msgid "Bij Powertaal"
+msgstr "At Powertaal"
+
+#: templates/main/home.html
+msgid "zijn er twee opties:"
+msgstr "there are two options:"
+
+#: templates/main/home.html
+msgid "STANDAARD"
+msgstr "STANDARD"
+
+#: templates/main/home.html
+msgid "HELEMAAL GRATIS EN ZONDER REGISTRATIE."
+msgstr "COMPLETELY FREE AND WITHOUT REGISTRATION."
+
+#: templates/main/home.html
+msgid "Als u snel en spelenderwijs een nieuwe taal wilt leren. Dit kan in uw eigen tempo met een verschillende effectieve oefeningen. Zo kunt u oefenen met een groot aantal woorden in verschillende talen, waarbij u snel een verbetering in uw taalvaardigheid zult ontwikkelen. Aan het einde van elk spel ziet u de score op het scorebord."
+msgstr "If you want to learn a new language quickly and playfully. This can be done at your own pace with various effective exercises. This way you can practice with a large number of words in different languages, where you will quickly develop an improvement in your language skills. At the end of each game you will see the score on the scoreboard."
+
+#: templates/main/home.html
+msgid "Meer lezen..."
+msgstr "Read more..."
+
+#: templates/main/home.html
+msgid "Start nu"
+msgstr "Start now"
+
+#: templates/main/home.html
+msgid "GEVORDERD"
+msgstr "ADVANCED"
+
+#: templates/main/home.html
+msgid "UW EIGEN ACCOUNT VOOR MAAR"
+msgstr "YOUR OWN ACCOUNT FOR ONLY"
+
+#: templates/main/home.html
+msgid "Binnen uw eigen dashboard en trainingsomgeving hebt u ongelimiteerd toegang tot alles wat Powertaal te bieden heeft. Een uitgebreidere set van woorden én zinnen met meer trainingsopties. U kunt bijvoorbeeld oefenen met woorden + de bijbehorende lidwoorden en u kunt een dictee maken. Elke maand er nieuwe woorden en zinnen om mee te oefenen."
+msgstr "Within your own dashboard and training environment you have unlimited access to everything Powertaal has to offer. A more extensive set of words and sentences with more training options. For example, you can practice with words + the corresponding articles and you can make a dictation. Every month there are new words and sentences to practice with."
+
+#: templates/main/home.html
+msgid "Inloggen"
+msgstr "Login"
+
+#: templates/main/home.html
+msgid "WELKOM BIJ POWERTAAL"
+msgstr "WELCOME TO POWERTAAL"
+
+#: templates/main/home.html
+msgid "Dé plek om in uw eigen tempo en met uw eigen input een nieuwe taal te leren. Voor elke taal vormen woorden de basis. Leer die woorden hier door ze te lezen, te typen, op te schrijven of en te beluisteren. Door herhaling en diversiteit tijdens de training zal het u makkelijker afgaan dan bij vele andere methodes. <strong class=\"highlight-text\">U bepaalt zelf het tempo</strong>."
+msgstr "The place to learn a new language at your own pace and with your own input. Words form the basis for every language. Learn those words here by reading, typing, writing or listening to them. Through repetition and diversity during training, it will be easier for you than with many other methods. <strong class=\"highlight-text\">You determine the pace yourself</strong>." 

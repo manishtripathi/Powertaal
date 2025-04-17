@@ -1,0 +1,402 @@
+{% load static %}
+{% load i18n %}
+
+<div class="form-container">
+    <div class="language-switcher">
+        <button class="language-btn" onclick="updateLanguage('nl')">
+            <span class="flag-icon flag nl"></span>
+            <span>الهولندية</span>
+        </button>
+        <button class="language-btn" onclick="updateLanguage('en')">
+            <span class="flag-icon flag en"></span>
+            <span>الإنجليزية</span>
+        </button>
+        <button class="language-btn" onclick="updateLanguage('de')">
+            <span class="flag-icon flag de"></span>
+            <span>الألمانية</span>
+        </button>
+        <button class="language-btn active" onclick="updateLanguage('ar')">
+            <span class="flag-icon flag ar"></span>
+            <span>العربية</span>
+        </button>
+    </div>
+
+    <div class="form-title">
+        {% if form_title %}
+            <h2>{{ form_title }}</h2>
+        {% else %}
+            <h2>نموذج</h2>
+        {% endif %}
+    </div>
+    
+    <!-- Wachtwoord vergeten link bovenaan -->
+    <div class="password-forgot-top">
+        <a href="{% url 'users:password_reset' %}" class="form-link">نسيت كلمة المرور؟</a>
+    </div>
+
+    <form method="post" class="auth-form" novalidate>
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                    {% if field.field.required %}
+                        <span class="required">*</span>
+                    {% endif %}
+                </label>
+                
+                {{ field }}
+                
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                
+                {% if field.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-block">
+                {% if submit_text %}
+                    {{ submit_text }}
+                {% else %}
+                    تسجيل الدخول
+                {% endif %}
+            </button>
+        </div>
+    </form>
+    
+    <!-- Nog geen account? Maak een nieuw account -->
+    <div class="register-link-bottom">
+        <p>ليس لديك حساب؟ <a href="{% url 'users:register' %}" class="form-link">إنشاء حساب جديد</a></p>
+    </div>
+</div>
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .language-switcher {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .language-btn {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+    
+    .language-btn:hover {
+        background-color: #e9ecef;
+    }
+    
+    .language-btn.active {
+        background-color: #00b0f0;
+        color: white;
+        border-color: #00b0f0;
+    }
+    
+    .flag-icon {
+        width: 24px;
+        height: 18px;
+        margin-left: 8px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    
+    /* CSS flags */
+    .flag.nl {
+        background: linear-gradient(to bottom,
+            #AE1C28 33.33%,
+            #FFFFFF 33.33%, #FFFFFF 66.66%,
+            #21468B 66.66%);
+    }
+    
+    .flag.en {
+        background-color: #012169;
+        background-image: 
+            linear-gradient(to bottom right, transparent 35%, #C8102E 35%, #C8102E 65%, transparent 65%),
+            linear-gradient(to bottom left, transparent 35%, #C8102E 35%, #C8102E 65%, transparent 65%),
+            linear-gradient(#FFFFFF 0, #FFFFFF 100%);
+        background-size: 100% 100%, 100% 100%, 40% 40%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    .flag.de {
+        background: linear-gradient(to bottom, 
+            #000000 33.33%, 
+            #DD0000 33.33%, #DD0000 66.66%, 
+            #FFCE00 66.66%);
+    }
+    
+    .flag.ar {
+        background: linear-gradient(to bottom, 
+            #006C35 33.33%, 
+            #FFFFFF 33.33%, #FFFFFF 66.66%, 
+            #000000 66.66%);
+        position: relative;
+    }
+    
+    .flag.ar:after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #CE1126;
+    }
+    
+    .form-title {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .form-title h2 {
+        color: #333;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    .password-forgot-top {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .register-link-bottom {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #00b0f0;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 176, 240, 0.2);
+    }
+    
+    .required {
+        color: #dc3545;
+        margin-right: 4px;
+    }
+    
+    .form-text {
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+    
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+    .alert {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    
+    .alert-danger {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+    }
+    
+    .form-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .btn-block {
+        width: 100%;
+        display: block;
+    }
+    
+    .btn-primary {
+        background-color: #00b0f0;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0090c5;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-links {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .form-link {
+        color: #00b0f0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .form-link:hover {
+        color: #0090c5;
+        text-decoration: underline;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .form-container {
+            padding: 20px;
+        }
+        
+        .form-title h2 {
+            font-size: 22px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+    }
+</style>
+
+<script>
+    function updateLanguage(language) {
+        // Get the current URL
+        let currentUrl = window.location.href;
+        
+        // Create new URLs for each language
+        let newUrl;
+        
+        if (language === 'nl') {
+            newUrl = currentUrl.replace('/ar/', '/nl/');
+        } else if (language === 'en') {
+            newUrl = currentUrl.replace('/ar/', '/en/');
+        } else if (language === 'de') {
+            newUrl = currentUrl.replace('/ar/', '/de/');
+        } else if (language === 'ar') {
+            newUrl = currentUrl;
+        }
+        
+        // Redirect to the new URL
+        window.location.href = newUrl;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add validation classes on form submission
+        const form = document.querySelector('.auth-form');
+        
+        if (form) {
+            const inputs = form.querySelectorAll('input, select, textarea');
+            
+            form.addEventListener('submit', function(e) {
+                inputs.forEach(input => {
+                    if (input.hasAttribute('required') && !input.value.trim()) {
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+            });
+            
+            // Remove validation classes on input
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.classList.remove('is-invalid');
+                });
+            });
+        }
+    });
+</script> 
