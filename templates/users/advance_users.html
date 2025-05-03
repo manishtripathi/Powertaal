@@ -1,0 +1,7 @@
+<!-- templates/users/advance_users.html -->
+<h2>Advance Users</h2>
+<ul>
+    {% for user in users %}
+        <li>{{ user.firstname }} {{ user.lastname }} ({{ user.emailid }})</li>
+    {% endfor %}
+</ul>

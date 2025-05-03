@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
+    'pages'
 ]
 
 MIDDLEWARE = [
@@ -80,26 +81,30 @@ WSGI_APPLICATION = 'powertaal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
+
+# settings.py
+DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'powertaal',
+        'ENGINE': 'mssql',
+        'NAME': 'PowerTaal_Live',
         'USER': 'sa',
         'PASSWORD': 'win.Brilmij#22',
-        'HOST': '92.205.182.215',  
-        'PORT': '1433',
+        'HOST': '92.205.182.215',
+        'PORT': '',
         'OPTIONS': {
-            'driver': 'ODBC Driver 18 for SQL Server',
-            'extra_params': 'TrustServerCertificate=yes;',
+            'driver': 'ODBC Driver 17 for SQL Server',  # Or 18 depending on your installation
+            'extra_params': 'TrustServerCertificate=yes;',  # Optional, suppress cert warnings
         },
     }
-    
 }
+
 
 
 # Password validation

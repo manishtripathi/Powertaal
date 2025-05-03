@@ -1,36 +1,40 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm
+from .forms import RegistrationForm
+from .models.models import FreeUser
+from users.models.advanceuser import AdvanceUser
 
-def register(request):
-    """View for user registration."""
+from django.utils import timezone
+import random
+
+def user_registration(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account aangemaakt voor {username}! U kunt nu inloggen.')
-            return redirect('users:login')
+            user = form.save(commit=False)
+            user.CreatedDate = timezone.now()
+            user.CreatedBySource = 'Website'
+            user.save()
+            return redirect('success_page')  # Redirect to a success page
     else:
-        form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form, 'title': 'Registreren'})
+        form = RegistrationForm()
+    return render(request, 'registration.html', {'form': form})
 
-@login_required
-def profile(request):
-    """View for user profile."""
-    if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        if u_form.is_valid():
-            u_form.save()
-            messages.success(request, 'Uw profiel is bijgewerkt!')
-            return redirect('users:profile')
-    else:
-        u_form = UserUpdateForm(instance=request.user)
+def guest_login(request):
+    guest_name = "Guest_" + str(random.randint(1000, 9999))
+    guest = FreeUser(
+        UserName=guest_name,
+        Place='Guest',
+        CreatedDate=timezone.now(),
+        CreatedBySource='GuestLogin'
+    )
+    guest.save()
+    # Redirect or login session creation after guest creation
+    return redirect('success_page')
 
-    context = {
-        'u_form': u_form,
-        'title': 'Profiel'
-    }
+def success_page(request):
+    return render(request, 'success.html')
 
-    return render(request, 'users/profile.html', context)
+def show_advance_users(request):
+    users = AdvanceUser.objects.all()
+    return render(request, 'users/advance_users.html', {'users': users})
+

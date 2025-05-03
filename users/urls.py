@@ -1,26 +1,12 @@
 from django.urls import path
 from . import views
-from django.contrib.auth import views as auth_views
+# from users.models.advanceuser import AdvanceUser  
 
-app_name = 'users'
+
 
 urlpatterns = [
-    path('register/', views.register, name='register'),
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('profile/', views.profile, name='profile'),
-    
-    # Password reset URLs
-    path('password-reset/', 
-         auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), 
-         name='password_reset'),
-    path('password-reset/done/', 
-         auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), 
-         name='password_reset_done'),
-    path('password-reset-confirm/<uidb64>/<token>/', 
-         auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), 
-         name='password_reset_confirm'),
-    path('password-reset-complete/', 
-         auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), 
-         name='password_reset_complete'),
-] 
+    path('register/', views.user_registration, name='register'),
+    path('guest-login/', views.guest_login, name='guest_login'),
+    path('success/', views.success_page, name='success_page'),  # Define success_page too
+    path('advance-users/', views.show_advance_users, name='show_advance_users'),
+]
